@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?qhj5na');
+  src:  url('fonts/icomoon.eot?qhj5na#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?qhj5na') format('truetype'),
+    url('fonts/icomoon.woff?qhj5na') format('woff'),
+    url('fonts/icomoon.svg?qhj5na#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+  content: "\e916";
+}
+.icon-eye:before {
+  content: "\e909";
+}
+.icon-support:before {
+  content: "\e915";
+}
+.icon-caution:before {
+  content: "\e910";
+}
+.icon-apple:before {
+  content: "\e900";
+}
+.icon-andriod:before {
+  content: "\e901";
+}
+.icon-calendar:before {
+  content: "\e902";
+}
+.icon-checkbox:before {
+  content: "\e903";
+}
+.icon-email:before {
+  content: "\e904";
+}
+.icon-pen:before {
+  content: "\e905";
+}
+.icon-phone:before {
+  content: "\e906";
+}
+.icon-dwon-arrow:before {
+  content: "\e907";
+}
+.icon-password:before {
+  content: "\e908";
+}
+.icon-arrow-right:before {
+  content: "\e90a";
+}
+.icon-motor:before {
+  content: "\e90b";
+}
+.icon-home:before {
+  content: "\e90c";
+}
+.icon-travel:before {
+  content: "\e90d";
+}
+.icon-takaful:before {
+  content: "\e90e";
+}
+.icon-get-a-quote:before {
+  content: "\e90f";
+}
+.icon-call:before {
+  content: "\e911";
+}
+.icon-emergency:before {
+  content: "\e912";
+}
+.icon-notification:before {
+  content: "\e913";
+}
+.icon-insurance-coverage:before {
+  content: "\e914";
+}
+.icon-Hospital:before {
+  content: "\e917";
+}
+.icon-health:before {
+  content: "\e91a";
+}
+.icon-download:before {
+  content: "\e91b";
+}
+.icon-pharmacies:before {
+  content: "\e91c";
+}

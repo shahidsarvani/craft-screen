@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Almarai';
+  src: url("../fonts/Almarai-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body{
+	font-family: "Almarai"; 
+	margin:0px;
+	padding:0px; 
+}
