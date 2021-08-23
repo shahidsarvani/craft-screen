@@ -57,5 +57,52 @@
 
 <script src="./assets/js/jquery-3.6.0.min.js"></script> 
 <script src="./assets/js/custom.js"></script> 
+
+<script>  
+	jQuery(document).ready(function($){	 
+
+		var random_number1 = Math.floor(Math.random() * 100);  
+		var xmlDoc = readXml("xml/layout.xml?rm="+random_number1); 
+		var tagObj = xmlDoc.getElementsByTagName("config"); 
+		
+		var site_name = tagObj[0].getAttribute('site_name');
+		var site_url = tagObj[0].getAttribute('site_url');
+		var site_logo_img = tagObj[0].getAttribute('site_logo_img');
+		var site_email = tagObj[0].getAttribute('site_email');
+		var site_contact_no = tagObj[0].getAttribute('site_contact_no');
+		var site_copyright_text = tagObj[0].getAttribute('site_copyright_text');
+		var no_of_items_per_page = tagObj[0].getAttribute('no_of_items_per_page');
+		
+		
+		/*
+		if(site_logo_img != ''){
+			$("#fetch_site_logo_img").attr("src", site_logo_img ); 
+		} */
+									
+		/*if(localStorage.getItem("my_tmp_file_name")){
+			localStorage.removeItem("my_tmp_file_name");
+		}*/
+	});
+	
+	
+	function readXml(xmlFile){  
+		var xmlDoc; 
+		if(typeof window.DOMParser != "undefined") {
+			xmlhttp=new XMLHttpRequest();
+			xmlhttp.open("GET",xmlFile,false);
+			if (xmlhttp.overrideMimeType){
+				xmlhttp.overrideMimeType('text/xml');
+			}
+			xmlhttp.send();
+			xmlDoc=xmlhttp.responseXML;
+		}
+		else{
+			xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+			xmlDoc.async="false";
+			xmlDoc.load(xmlFile);
+		}
+		return xmlDoc; 
+	}
+</script>
 </body>
 </html>

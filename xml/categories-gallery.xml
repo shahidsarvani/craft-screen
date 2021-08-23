@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<photos>
+  <config
+		folder="ASSETS/"
+		show_tooltip="false"
+		scroll_speed="1"		
+		thumbnail_spacing="0"
+		thumbnail_border_size="0"
+		thumbnail_border_color="#CCCCCC"
+		tween_duration="0.7"		
+		previous_button="true"
+		next_button="true"
+		Bigimage_title="04_CONTENT/04_02_01_HEADER.png"
+		Bigimage_bottomlogo="04_CONTENT/04_02_04_FOOTER.png"
+		Bigimage_nocaptionlogo="04_CONTENT/04_03_01_HEADER_FOOTER_NO_CAPTION.png"		
+		description=""
+		description_bg_color="#000000"
+		description_bg_alpha="0.5"
+		css_file=""></config>
+ 
+   <photo>
+    <thumbnail>04_CONTENT/5_AL_BAHA/CONTENT_001/button.png</thumbnail>
+    <filetype>image</filetype>
+    <filename>04_CONTENT/5_AL_BAHA/CONTENT_001/CONTENT.jpg</filename>
+      <arabictext>null</arabictext>
+    <englishtext>null</englishtext>
+  </photo>
+   <photo>
+    <thumbnail>04_CONTENT/5_AL_BAHA/CONTENT_002/button.png</thumbnail>
+    <filetype>image</filetype>
+    <filename>04_CONTENT/5_AL_BAHA/CONTENT_002/CONTENT.jpg</filename>
+     <arabictext>04_CONTENT/5_AL_BAHA/CONTENT_002/04_02_02_AR_TEXT.png</arabictext>
+    <englishtext>04_CONTENT/5_AL_BAHA/CONTENT_002/04_02_03_EN_TEXT.png</englishtext>
+  </photo>
+	 <photo>
+    <thumbnail>04_CONTENT/5_AL_BAHA/CONTENT_003/button.png</thumbnail>
+    <filetype>image</filetype>
+    <filename>04_CONTENT/5_AL_BAHA/CONTENT_003/CONTENT.jpg</filename>
+     <arabictext>04_CONTENT/5_AL_BAHA/CONTENT_003/04_02_02_AR_TEXT.png</arabictext>
+    <englishtext>04_CONTENT/5_AL_BAHA/CONTENT_003/04_02_03_EN_TEXT.png</englishtext>
+  </photo>
+  
+  
+  
+  
+  
+ 
+ 
+</photos>

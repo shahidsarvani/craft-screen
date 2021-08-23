@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+  <config
+		site_name="Craft Screen"
+		site_url="http://localhost/custom-projects/craft-screen/"
+		site_logo_img="http://localhost/custom-projects/craft-screen/assets/images/craft-logo.png"
+		site_email="info@craft-screen.com"
+		site_contact_no="+971 009990088"
+		site_copyright_text="2021 Copyrights reserved"
+		no_of_items_per_page="20" 
+	></config>
+</layout>
