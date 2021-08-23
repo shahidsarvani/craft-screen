@@ -61,57 +61,97 @@
 
 <script src="./assets/js/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="./assets/js/custom.js"></script> 
-
-<script>  
-	jQuery(document).ready(function($){	 
-
-		var random_number1 = Math.floor(Math.random() * 100);  
-		var xmlDoc = readXml("./xml/layout.xml?rm="+random_number1); 
-		var configObj = xmlDoc.getElementsByTagName("config"); 
-		
-		var site_name = configObj[0].getAttribute('site_name');
-		var site_url = configObj[0].getAttribute('site_url');
-		var site_logo_img = configObj[0].getAttribute('site_logo_img');
-		var site_email = configObj[0].getAttribute('site_email');
-		var site_contact_no = configObj[0].getAttribute('site_contact_no');
-		var site_copyright_text = configObj[0].getAttribute('site_copyright_text');
-		var no_of_items_per_page = configObj[0].getAttribute('no_of_items_per_page');
-		
-		var categoryObj = xmlDoc.getElementsByTagName("categories"); 
-		var total_category_items = categoryObj[0].getElementsByTagName("category_item").length; 
-		 
-		//var filenameVal = categoryObj[0].getElementsByTagName("category_item")[paras2].getElementsByTagName("filename")[0].childNodes[0].nodeValue;
-		
-		var cate_txt = ''; 
-		var cntr;
-		for (cntr = 0; cntr < total_category_items; cntr++) {
-			var item_name_val = categoryObj[0].getElementsByTagName("category_item")[cntr].getElementsByTagName("item_name")[0].childNodes[0].nodeValue;
-			var item_summary_val = categoryObj[0].getElementsByTagName("category_item")[cntr].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
-			var item_thumbnail_val = categoryObj[0].getElementsByTagName("category_item")[cntr].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue; 
-		
-		 	cate_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <img src="'+item_thumbnail_val+'" alt="'+item_name_val+'" class="img-thumbnail" /> <h2 class="heading">'+item_name_val+'</h2> <div class="summary_txt">'+item_summary_val+'</div> </div>';
+<script src="./assets/js/custom.js"></script>  
+<script>   
+	operate_main_cateogories();
+	
+	function operate_main_cateogories(){
+	
+		jQuery(document).ready(function($){	 
+	
+			var random_number1 = Math.floor(Math.random() * 100);  
+			var xmlDoc = readXml("./xml/layout.xml?rm="+random_number1); 
+			var configObj = xmlDoc.getElementsByTagName("config"); 
 			
+			var site_name = configObj[0].getAttribute('site_name');
+			var site_url = configObj[0].getAttribute('site_url');
+			var site_logo_img = configObj[0].getAttribute('site_logo_img');
+			var site_email = configObj[0].getAttribute('site_email');
+			var site_contact_no = configObj[0].getAttribute('site_contact_no');
+			var site_copyright_text = configObj[0].getAttribute('site_copyright_text');
+			var no_of_items_per_page = configObj[0].getAttribute('no_of_items_per_page'); 
+			
+			var categoryObj = xmlDoc.getElementsByTagName("categories"); 
+			var total_category_nums = categoryObj[0].getElementsByTagName("category").length; 
+			 
+			//var filenameVal = categoryObj[0].getElementsByTagName("category_item")[paras2].getElementsByTagName("filename")[0].childNodes[0].nodeValue;
+			
+			var cate_txt = ''; 
+			var cntr;
+			for (cntr = 0; cntr < total_category_nums; cntr++) {
+				var category_id = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_id")[0].childNodes[0].nodeValue;
+				var category_name = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_name")[0].childNodes[0].nodeValue;
+				var category_slug = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_slug")[0].childNodes[0].nodeValue;
+				var category_summary = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
+				var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue; 
+			
+				cate_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" class="img-thumbnail" /></a> <h2 class="heading"><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\');"> '+category_name+' </a></h2> <div class="summary_txt">'+category_summary+'</div> </div>';
+				
+			}
+					 
+			$("#fetch_categories_data").html( cate_txt );	  
+				  
+			/*
+			if(site_logo_img != ''){
+				$("#fetch_site_logo_img").attr("src", site_logo_img ); 
+			} */
+										
+			/*if(localStorage.getItem("my_tmp_file_name")){
+				localStorage.removeItem("my_tmp_file_name");
+			}*/
+		}); 
+	}
+	
+	function operate_cateogory_items(sel_cateid){
+		jQuery(document).ready(function($){	 
+			//lert( sel_cateid );
+		
+			var xmlDoc = readXml("./xml/categories-gallery-items.xml"); 
+			var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
+			var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
+			var total_gallery_items_nums = CategoryItemObj.length; 
+			
+			var item_txt = ''; 
+			var cntrs;
+			for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++) {
+				var item_parent_id = CategoryItemObj[cntrs].getAttribute('parent_id');
+				if(item_parent_id == sel_cateid){ 
+				
+					var item_id = CategoryItemObj[cntrs].getElementsByTagName("item_id")[0].childNodes[0].nodeValue;
+					var item_name = CategoryItemObj[cntrs].getElementsByTagName("item_name")[0].childNodes[0].nodeValue;
+					var item_slug = CategoryItemObj[cntrs].getElementsByTagName("item_slug")[0].childNodes[0].nodeValue;
+					var item_summary = CategoryItemObj[cntrs].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
+					var item_thumbnail = CategoryItemObj[cntrs].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue;
+					 
+					item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
+				} 
+			}   
+			
+			$("#fetch_categories_data").html( ' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> <br> ' + item_txt );	  
+			
+			 
+			
+		/*	 	
+			var category_name = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_name")[0].childNodes[0].nodeValue;
+			var category_slug = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_slug")[0].childNodes[0].nodeValue;
+			var category_summary = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
+			var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue;  
 		}
 				 
-		$("#fetch_categories_data").html( cate_txt );	  
-				  
-		 
-		 //<category_item>
-   		//<item_name>item name 1</item_name>
+		$("#fetch_categories_data").html( cate_txt );	 */
 		
-		
-		  
-		 
-		/*
-		if(site_logo_img != ''){
-			$("#fetch_site_logo_img").attr("src", site_logo_img ); 
-		} */
-									
-		/*if(localStorage.getItem("my_tmp_file_name")){
-			localStorage.removeItem("my_tmp_file_name");
-		}*/
-	});
+		});
+	}	
 	
 	
 	function readXml(xmlFile){  
