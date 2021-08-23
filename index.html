@@ -1,79 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craft Screen Development</title>
+	<title>Craft Screen Development</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="./assets/css/style.css" /> 
 </head>
 <body>  
 <h1>Welcome to Craft Screen Development</h1> 
 <div class="wrapper">
-	<div class="container">
+	<div class="container">  
 	
-	<div class="row">
-	  <div class="category-item">
-		<a target="_blank" href="assets/images/image-1.jpg">
-		  <img src="./assets/images/image-1.jpg" alt="Image 1" width="600" height="400">
-		</a>
-		<div class="desc">Add a description of the image here</div>
-	  </div>
-	</div>
-	
-	
-	<div class="row">
-	  <div class="category-item">
-		<a target="_blank" href="assets/images/image-2.jpg">
-		  <img src="./assets/images/image-2.jpg" alt="Image 2" width="600" height="400">
-		</a>
-		<div class="desc">Add a description of the image here</div>
-	  </div>
-	</div>
-	
-	<div class="row">
-	  <div class="category-item">
-		<a target="_blank" href="assets/images/image-3.jpg">
-		  <img src="./assets/images/image-3.jpg" alt="Image 3" width="600" height="400">
-		</a>
-		<div class="desc">Add a description of the image here</div>
-	  </div>
-	</div>
-	
-	<div class="row">
-	  <div class="category-item">
-		<a target="_blank" href="assets/images/image-4.jpg">
-		  <img src="./assets/images/image-4.jpg" alt="Image 4" width="600" height="400">
-		</a>
-		<div class="desc">Add a description of the image here</div>
-	  </div>
-	</div>
-	
-	<div class="clearfix"></div> 
-	
+		<div class="row" id="fetch_categories_data">
+			 Loading...
+		</div>
+		
+		<!-- 
+		<div class="row">
+		  <div class="category-item">
+			<a target="_blank" href="assets/images/image-1.jpg">
+			  <img src="./assets/images/image-1.jpg" alt="Image 1" width="600" height="400">
+			</a>
+			<div class="desc">Add a description of the image here</div>
+		  </div>
+		</div>
+		
+		<div class="row">
+		  <div class="category-item">
+			<a target="_blank" href="assets/images/image-2.jpg">
+			  <img src="./assets/images/image-2.jpg" alt="Image 2" width="600" height="400">
+			</a>
+			<div class="desc">Add a description of the image here</div>
+		  </div>
+		</div>
+		
+		<div class="row">
+		  <div class="category-item">
+			<a target="_blank" href="assets/images/image-3.jpg">
+			  <img src="./assets/images/image-3.jpg" alt="Image 3" width="600" height="400">
+			</a>
+			<div class="desc">Add a description of the image here</div>
+		  </div>
+		</div>
+		
+		<div class="row">
+		  <div class="category-item">
+			<a target="_blank" href="assets/images/image-4.jpg">
+			  <img src="./assets/images/image-4.jpg" alt="Image 4" width="600" height="400">
+			</a>
+			<div class="desc">Add a description of the image here</div>
+		  </div>
+		</div>
+		
+		<div class="clearfix"></div>  -->
 	
 	</div>
 </div>
 
-<script src="./assets/js/jquery-3.6.0.min.js"></script> 
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="./assets/js/custom.js"></script> 
 
 <script>  
 	jQuery(document).ready(function($){	 
 
 		var random_number1 = Math.floor(Math.random() * 100);  
-		var xmlDoc = readXml("xml/layout.xml?rm="+random_number1); 
-		var tagObj = xmlDoc.getElementsByTagName("config"); 
+		var xmlDoc = readXml("./xml/layout.xml?rm="+random_number1); 
+		var configObj = xmlDoc.getElementsByTagName("config"); 
 		
-		var site_name = tagObj[0].getAttribute('site_name');
-		var site_url = tagObj[0].getAttribute('site_url');
-		var site_logo_img = tagObj[0].getAttribute('site_logo_img');
-		var site_email = tagObj[0].getAttribute('site_email');
-		var site_contact_no = tagObj[0].getAttribute('site_contact_no');
-		var site_copyright_text = tagObj[0].getAttribute('site_copyright_text');
-		var no_of_items_per_page = tagObj[0].getAttribute('no_of_items_per_page');
+		var site_name = configObj[0].getAttribute('site_name');
+		var site_url = configObj[0].getAttribute('site_url');
+		var site_logo_img = configObj[0].getAttribute('site_logo_img');
+		var site_email = configObj[0].getAttribute('site_email');
+		var site_contact_no = configObj[0].getAttribute('site_contact_no');
+		var site_copyright_text = configObj[0].getAttribute('site_copyright_text');
+		var no_of_items_per_page = configObj[0].getAttribute('no_of_items_per_page');
+		
+		var categoryObj = xmlDoc.getElementsByTagName("categories"); 
+		var total_category_items = categoryObj[0].getElementsByTagName("category_item").length; 
+		 
+		//var filenameVal = categoryObj[0].getElementsByTagName("category_item")[paras2].getElementsByTagName("filename")[0].childNodes[0].nodeValue;
+		
+		var cate_txt = ''; 
+		var cntr;
+		for (cntr = 0; cntr < total_category_items; cntr++) {
+			var item_name_val = categoryObj[0].getElementsByTagName("category_item")[cntr].getElementsByTagName("item_name")[0].childNodes[0].nodeValue;
+			var item_summary_val = categoryObj[0].getElementsByTagName("category_item")[cntr].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
+			var item_thumbnail_val = categoryObj[0].getElementsByTagName("category_item")[cntr].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue; 
+		
+		 	cate_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <img src="'+item_thumbnail_val+'" alt="'+item_name_val+'" class="img-thumbnail" /> <h2 class="heading">'+item_name_val+'</h2> <div class="summary_txt">'+item_summary_val+'</div> </div>';
+			
+		}
+				 
+		$("#fetch_categories_data").html( cate_txt );	  
+				  
+		 
+		 //<category_item>
+   		//<item_name>item name 1</item_name>
 		
 		
+		  
+		 
 		/*
 		if(site_logo_img != ''){
 			$("#fetch_site_logo_img").attr("src", site_logo_img ); 

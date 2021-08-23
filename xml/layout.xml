@@ -8,5 +8,27 @@
 		site_contact_no="+971 009990088"
 		site_copyright_text="2021 Copyrights reserved"
 		no_of_items_per_page="20" 
-	></config>
+	></config> 
+   <categories> 
+   	<category_item>
+   		<item_name>item name 1</item_name>
+		<item_summary>item summary 1</item_summary>
+		<item_thumbnail>assets/images/categories/image-1.jpg</item_thumbnail>
+    </category_item> 
+	<category_item>
+   		<item_name>item name 2</item_name>
+		<item_summary>item summary 2</item_summary>
+		<item_thumbnail>assets/images/categories/image-2.jpg</item_thumbnail>
+    </category_item> 
+	<category_item>
+   		<item_name>item name 3</item_name>
+		<item_summary>item summary 3</item_summary>
+		<item_thumbnail>assets/images/categories/image-3.jpg</item_thumbnail>
+    </category_item>
+	<category_item>
+   		<item_name>item name 4</item_name>
+		<item_summary>item summary 4</item_summary>
+		<item_thumbnail>assets/images/categories/image-4.jpg</item_thumbnail>
+    </category_item> 
+   </categories>
 </layout>

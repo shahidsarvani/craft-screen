@@ -11,6 +11,37 @@ html, body{
 	padding:0px; 
 }
 
+
+.heading {
+  padding: 2px;
+  text-align: center;
+}
+
+div.summary_txt {
+  padding: 5px;
+  text-align: center;
+}
+
+.item_thumb {
+	border:1px solid #aaa;
+	padding:2px;
+	-webkit-border-radius: 5px;  
+	-moz-border-radius: 5px;  
+	border-radius: 5px;
+	margin:3px;	
+}
+
+img.img-thumbnail{
+	border:none;
+}
+
+.col-md-4 {
+	width:32.5%;
+}
+
+
+
+/* 
 div.category-item {
   border: 1px solid #ccc;
 }
@@ -50,8 +81,8 @@ div.desc {
   .row {
     width: 100%;
   }
-}
-
+} */
+ 
 .clearfix:after {
   content: "";
   display: table;
