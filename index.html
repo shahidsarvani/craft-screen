@@ -62,6 +62,7 @@
 <script src="./assets/js/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="./assets/js/custom.js"></script>  
+<script src="./assets/js/spotlight.bundle.js"></script>
 <script>   
 	operate_main_cateogories();
 	
@@ -121,7 +122,7 @@
 			var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
 			var total_gallery_items_nums = CategoryItemObj.length; 
 			
-			var item_txt = ''; 
+			var item_txt = '<div class="spotlight-group">'; 
 			var cntrs;
 			for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++) {
 				var item_parent_id = CategoryItemObj[cntrs].getAttribute('parent_id');
@@ -133,9 +134,13 @@
 					var item_summary = CategoryItemObj[cntrs].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
 					var item_thumbnail = CategoryItemObj[cntrs].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue;
 					 
-					item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
+					item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
 				} 
 			}   
+			
+			 
+			item_txt += '</div>';
+
 			
 			$("#fetch_categories_data").html( ' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> <br> ' + item_txt );	  
 			
