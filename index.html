@@ -121,7 +121,22 @@
 			var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
 			var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
 			var total_gallery_items_nums = CategoryItemObj.length; 
+			  
+			var contrs;  
+			var saved_items_arrs = [];  
+			var random_number = Math.floor(Math.random() * 100);
+			readTextFile("./records.json?rm="+random_number, function(resp_txts){
+				var sel_rows = JSON.parse(resp_txts);    
+				for (contrs = 0; contrs < sel_rows.length; contrs++) {
+					var db_item_id =  sel_rows[contrs]["item_id"];
+					saved_items_arrs.push( db_item_id ); 
+					/*var visitor_id =  datas[0]["visitor_id"];
+					var category_id =  datas[0]["category_id"];*/  
+				}   
+			});
 			
+		setTimeout(() => {   
+				
 			var item_txt = '<div class="spotlight-group">'; 
 			var cntrs;
 			for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++) {
@@ -133,27 +148,75 @@
 					var item_slug = CategoryItemObj[cntrs].getElementsByTagName("item_slug")[0].childNodes[0].nodeValue;
 					var item_summary = CategoryItemObj[cntrs].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
 					var item_thumbnail = CategoryItemObj[cntrs].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue;
+					var fav_cls_val = ''; 
+					//alert( saved_items_arrs[0] + " <<====>> " + item_id); //item_id
+					 if(saved_items_arrs.indexOf(item_id) !== -1){ 
+					 	 fav_cls_val = 'favorite-cls'; 
+					 } 
+					 // alert( fav_cls_val );
+					 item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
 					 
-					item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
+					 //onclick="operate_cateogory_items(\''+category_id+'\');"
 				} 
-			}   
+			}
 			
-			 
 			item_txt += '</div>';
-
 			
-			$("#fetch_categories_data").html( ' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> <br> ' + item_txt );	  
+			$("#fetch_categories_data").html( ' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> <br> ' + item_txt );
 			
 			 
 			
-		/*	 	
+			$(".operate-fav-cls").click(function() {
+			 	var my_sel_category_id = $(this).attr("data-category-id");
+				var my_sel_item_id = $(this).attr("data-item-id");
+				
+				var item_status = 0;
+				if($(this).hasClass("favorite-cls")){ 
+					item_status = 0;
+					$(this).removeClass('favorite-cls');
+				}else{
+					item_status = 1;
+					$(this).addClass('favorite-cls');
+				}
+			
+				
+				var formData = new FormData();
+				formData.append("visitor_id", '1');  
+				formData.append("category_id", my_sel_category_id);  
+				formData.append("item_id", my_sel_item_id);
+				formData.append("item_status", item_status);  
+							   
+				$.ajax({
+					cache: false,
+					method: "POST",
+					url: "script.php",
+					contentType: false,
+					processData: false,
+					data: formData,
+					beforeSend: function(){
+						//$('.loading').show();
+					},
+					success: function(resp_data){
+						//$('.loading').hide();
+						//$('#fetch_home_contents').html(resp_data); 
+						if(resp_data == 1){
+								alert("saved successfully!"); 
+						}else{ 
+							 	alert("error while saving the selected item!"); 
+						} 
+					}
+				});  
+			});
+			 
+		},600);
+		
+		/*
 			var category_name = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_name")[0].childNodes[0].nodeValue;
 			var category_slug = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_slug")[0].childNodes[0].nodeValue;
 			var category_summary = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
 			var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue;  
 		}
-				 
-		$("#fetch_categories_data").html( cate_txt );	 */
+		$("#fetch_categories_data").html( cate_txt ); */
 		
 		});
 	}	
@@ -176,6 +239,18 @@
 			xmlDoc.load(xmlFile);
 		}
 		return xmlDoc; 
+	}
+	
+	function readTextFile(file, callback) {
+		var rawFile = new XMLHttpRequest();
+		rawFile.overrideMimeType("application/json");
+		rawFile.open("GET", file, true);
+		rawFile.onreadystatechange = function() {
+			if (rawFile.readyState === 4 && rawFile.status == "200") {
+				callback(rawFile.responseText);
+			}
+		}
+		rawFile.send(null);
 	}
 </script>
 </body>
