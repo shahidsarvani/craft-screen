@@ -96,7 +96,7 @@
 				var category_summary = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
 				var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue; 
 			
-				cate_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" class="img-thumbnail" /></a> <h2 class="heading"><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\');"> '+category_name+' </a></h2> <div class="summary_txt">'+category_summary+'</div> </div>';
+				cate_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" class="img-thumbnail" /></a> <h2 class="heading"><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"> '+category_name+' </a></h2> <div class="summary_txt">'+category_summary+'</div> </div>';
 				
 			}
 					 
@@ -113,7 +113,7 @@
 		}); 
 	}
 	
-	function operate_cateogory_items(sel_cateid){
+	function operate_cateogory_items(sel_cateid, show_fav){
 		jQuery(document).ready(function($){	 
 			//lert( sel_cateid );
 		
@@ -137,7 +137,8 @@
 			
 		setTimeout(() => {   
 				
-			var item_txt = '<div class="spotlight-group">'; 
+			var item_txt = '';
+			var fav_nums = 0; 
 			var cntrs;
 			for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++) {
 				var item_parent_id = CategoryItemObj[cntrs].getAttribute('parent_id');
@@ -152,20 +153,31 @@
 					//alert( saved_items_arrs[0] + " <<====>> " + item_id); //item_id
 					 if(saved_items_arrs.indexOf(item_id) !== -1){ 
 					 	 fav_cls_val = 'favorite-cls'; 
+						 fav_nums = fav_nums + 1;
 					 } 
-					 // alert( fav_cls_val );
-					 item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
 					 
+					 if(show_fav == 1 && fav_cls_val == 'favorite-cls'){
+					   
+						item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
+					 
+					 }else if(show_fav == 0){
+					 	
+						item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
+					
+					 }
 					 //onclick="operate_cateogory_items(\''+category_id+'\');"
 				} 
 			}
 			
-			item_txt += '</div>';
+			var ret_items_txt = '';
+			if(item_txt === ''){
+				ret_items_txt += '<div class="spotlight-group"> No record found! </div>';
+			}else{ 
+				ret_items_txt += '<div class="spotlight-group"> '+ item_txt +' </div>';
+			}
 			
-			$("#fetch_categories_data").html( ' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> <br> ' + item_txt );
-			
+			$("#fetch_categories_data").html(' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> &nbsp; | &nbsp; <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');"> Show Favorite ('+fav_nums+')</a> <br> ' + ret_items_txt );
 			 
-			
 			$(".operate-fav-cls").click(function() {
 			 	var my_sel_category_id = $(this).attr("data-category-id");
 				var my_sel_item_id = $(this).attr("data-item-id");
@@ -178,8 +190,7 @@
 					item_status = 1;
 					$(this).addClass('favorite-cls');
 				}
-			
-				
+			 
 				var formData = new FormData();
 				formData.append("visitor_id", '1');  
 				formData.append("category_id", my_sel_category_id);  
@@ -200,9 +211,9 @@
 						//$('.loading').hide();
 						//$('#fetch_home_contents').html(resp_data); 
 						if(resp_data == 1){
-								alert("saved successfully!"); 
+							alert("saved successfully!"); 
 						}else{ 
-							 	alert("error while saving the selected item!"); 
+							 alert("error while saving the selected item!"); 
 						} 
 					}
 				});  
