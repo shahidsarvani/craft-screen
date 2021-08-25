@@ -24,4 +24,9 @@ body {
 }
 .link-list li a img {
     max-width: 650px;
+
+}
+
+.link-list li a:hover img{
+    filter: invert(19%) sepia(44%) saturate(6849%) hue-rotate(293deg) brightness(114%) contrast(129%);
 }
