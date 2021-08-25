@@ -5,27 +5,48 @@
 		<item_name>item name 1</item_name>
 		<item_slug>item-name-1</item_slug>
 		<item_summary>item summary 1</item_summary>
-		<item_thumbnail>assets/images/categories/image-1.jpg</item_thumbnail>
+		<item_thumbnail>assets/images/categories_items/image-1.jpg</item_thumbnail>
+		<item_type>image</item_type>
 	</category_item> 
 	<category_item parent_id="2">
 		<item_id>2</item_id>
 		<item_name>item name 2</item_name>
 		<item_slug>item-name-2</item_slug>
 		<item_summary>item summary 2</item_summary>
-		<item_thumbnail>assets/images/categories/image-2.jpg</item_thumbnail>
+		<item_thumbnail>assets/images/categories_items/image-2.jpg</item_thumbnail>
+		<item_type>image</item_type>
 	</category_item> 
 	<category_item parent_id="2">
 		<item_id>3</item_id>
 		<item_name>item name 3</item_name>
 		<item_slug>item-name-3</item_slug>
 		<item_summary>item summary 3</item_summary>
-		<item_thumbnail>assets/images/categories/image-3.jpg</item_thumbnail>
+		<item_thumbnail>assets/images/categories_items/image-3.jpg</item_thumbnail>
+		<item_type>image</item_type>  
 	</category_item>
 	<category_item parent_id="3">
 		<item_id>4</item_id>
 		<item_name>item name 4</item_name>
 		<item_slug>item-name-4</item_slug>
 		<item_summary>item summary 4</item_summary>
-		<item_thumbnail>assets/images/categories/image-4.jpg</item_thumbnail>
-	</category_item> 
+		<item_thumbnail>assets/images/categories_items/image-4.jpg</item_thumbnail>
+		<item_type>image</item_type>
+	</category_item>
+	<category_item parent_id="4">
+		<item_id>5</item_id>
+		<item_name>item name 5</item_name>
+		<item_slug>item-name-5</item_slug>
+		<item_summary>item summary 5</item_summary>
+		<item_thumbnail>assets/images/categories_items/image-5.jpg</item_thumbnail>
+		<item_type>image</item_type>
+	</category_item>
+	<category_item parent_id="4">
+		<item_id>6</item_id>
+		<item_name>item name 6</item_name>
+		<item_slug>item-name-6</item_slug>
+		<item_summary>item summary 6</item_summary>
+		<item_thumbnail>assets/images/categories_items/video-img.jpg</item_thumbnail>
+		<item_type>video</item_type>
+		<item_video_url>https://nextapps.de/video/spotlight/big_buck_bunny.mp4</item_video_url>
+	</category_item>  
 </category_items> 

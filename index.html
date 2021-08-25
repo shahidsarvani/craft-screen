@@ -77,16 +77,16 @@
 	function operate_cateogory_items(sel_cateid, show_fav){
 		jQuery(document).ready(function($){	 
 			//lert( sel_cateid );
-		
-			var xmlDoc = readXml("./xml/categories-gallery-items.xml"); 
+			var random_number1 = Math.floor(Math.random() * 100);
+			var xmlDoc = readXml("./xml/categories-gallery-items.xml?rm="+random_number1); 
 			var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
 			var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
 			var total_gallery_items_nums = CategoryItemObj.length; 
 			  
 			var contrs;  
 			var saved_items_arrs = [];  
-			var random_number = Math.floor(Math.random() * 100);
-			readTextFile("./records.json?rm="+random_number, function(resp_txts){
+			var random_number2 = Math.floor(Math.random() * 100);
+			readTextFile("./records.json?rm="+random_number2, function(resp_txts){
 				var sel_rows = JSON.parse(resp_txts);    
 				for (contrs = 0; contrs < sel_rows.length; contrs++) {
 					var db_item_id =  sel_rows[contrs]["item_id"];
@@ -110,6 +110,12 @@
 					var item_slug = CategoryItemObj[cntrs].getElementsByTagName("item_slug")[0].childNodes[0].nodeValue;
 					var item_summary = CategoryItemObj[cntrs].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
 					var item_thumbnail = CategoryItemObj[cntrs].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue;
+					var item_type = CategoryItemObj[cntrs].getElementsByTagName("item_type")[0].childNodes[0].nodeValue;
+					var item_video_url = ''; 
+					if(item_type == "video"){
+						item_video_url = CategoryItemObj[cntrs].getElementsByTagName("item_video_url")[0].childNodes[0].nodeValue;
+					}
+		
 					var fav_cls_val = ''; 
 					//alert( saved_items_arrs[0] + " <<====>> " + item_id); //item_id
 					 if(saved_items_arrs.indexOf(item_id) !== -1){ 
@@ -119,12 +125,31 @@
 					 
 					 if(show_fav == 1 && fav_cls_val == 'favorite-cls'){
 					   
-						item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
+						if(item_video_url != ''){
+							/* data-src-webm="https://nextapps.de/video/spotlight/big_buck_bunny.webm" data-src-ogg="https://nextapps.de/video/spotlight/big_buck_bunny.ogv"  
+							<a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'">
+							 */ 
+							/// <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" />
+		
+							item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
+						
+						}else{
+						
+							item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
+						}
+					   
 					 
 					 }else if(show_fav == 0){
-					 	
-						item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
-					
+					 
+					 	 if(item_video_url != ''){
+						 
+						 	item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
+						
+						 }else{
+						 
+						 	item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
+						 
+						 }
 					 }
 					 //onclick="operate_cateogory_items(\''+category_id+'\');"
 				} 
