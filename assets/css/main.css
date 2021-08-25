@@ -1,0 +1,26 @@
+body {
+    background-color: #fffbf0;
+}
+.logo {
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px 40px 0px 0px;
+
+}
+.logo img {
+    max-width: 250px;
+}
+.link-list {
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    margin-top: -180px;
+}
+.link-list li {
+    margin-bottom: 30px;
+}
+.link-list li a {
+    font-size: 60px;
+    text-decoration: none;
+    color: #000;
+}
