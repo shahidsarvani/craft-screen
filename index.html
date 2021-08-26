@@ -43,7 +43,9 @@
 			var site_copyright_text = configObj[0].getAttribute('site_copyright_text');
 			var no_of_items_per_page = configObj[0].getAttribute('no_of_items_per_page'); 
 			
-			var categoryObj = xmlDoc.getElementsByTagName("categories"); 
+			var categoryObj = xmlDoc.getElementsByTagName("categories");
+			localStorage.setItem("mycategoryObj", categoryObj);   
+			
 			var total_category_nums = categoryObj[0].getElementsByTagName("category").length; 
 			 
 			//var filenameVal = categoryObj[0].getElementsByTagName("category_item")[paras2].getElementsByTagName("filename")[0].childNodes[0].nodeValue;

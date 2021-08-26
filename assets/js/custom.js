@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('.menu-tab').click(function(){
       $('.menu-hide').toggleClass('show');
       $('.menu-tab').toggleClass('active');
@@ -6,9 +6,5 @@ $(document).ready(function(){
     $('a').click(function(){
       $('.menu-hide').removeClass('show');
       $('.menu-tab').removeClass('active');
-    });
-
-
- 
-
-  });
+    }); 
+  });*/

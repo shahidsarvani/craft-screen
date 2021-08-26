@@ -2,41 +2,76 @@
 <layout>
   <config
 		site_name="Craft Screen"
-		site_url="http://localhost/custom-projects/craft-screen/"
-		site_logo_img="http://localhost/custom-projects/craft-screen/assets/images/craft-logo.png"
+		site_url="https://digitalpoint.ae/dev/craft-screen/"
+		site_logo_img="assets/images/logo.svg"
 		site_email="info@craft-screen.com"
 		site_contact_no="+971 009990088"
 		site_copyright_text="2021 Copyrights reserved"
 		no_of_items_per_page="20" 
-	></config> 
-   <categories> 
+	></config>
+  <categories> 
    	<category>
 		<category_id>1</category_id>
-   		<category_name>category name 1</category_name>
-		<category_slug>category-name-1</category_slug>
-		<category_summary>category summary 1</category_summary>
-		<category_thumbnail>assets/images/categories/image-1.jpg</category_thumbnail>
+   		<category_name>Digital</category_name>
+		<category_slug>digital</category_slug>
+		<category_summary>Digital summary</category_summary>
+		<category_thumbnail>assets/images/digital.svg</category_thumbnail>
     </category> 
 	<category>
 		<category_id>2</category_id>
-   		<category_name>category name 2</category_name>
-		<category_slug>category-name-2</category_slug>
-		<category_summary>category summary 2</category_summary>
-		<category_thumbnail>assets/images/categories/image-2.jpg</category_thumbnail>
+   		<category_name>Exhibition</category_name>
+		<category_slug>exhibition-name-2</category_slug>
+		<category_summary>Exhibition summary 2</category_summary>
+		<category_thumbnail>assets/images/exi.svg</category_thumbnail>
     </category> 
 	<category>
 		<category_id>3</category_id>
-   		<category_name>category name 3</category_name>
-		<category_slug>category-name-3</category_slug>
-		<category_summary>category summary 3</category_summary>
-		<category_thumbnail>assets/images/categories/image-3.jpg</category_thumbnail>
+   		<category_name>Galleries</category_name>
+		<category_slug>galleries</category_slug>
+		<category_summary>Galleries summary 3</category_summary>
+		<category_thumbnail>assets/images/galleries.svg</category_thumbnail>
     </category>
 	<category>
 		<category_id>4</category_id>
-   		<category_name>category name 4</category_name>
-		<category_slug>category-name-4</category_slug>
-		<category_summary>category summary 4</category_summary>
-		<category_thumbnail>assets/images/categories/image-4.jpg</category_thumbnail>
+   		<category_name>Models</category_name>
+		<category_slug>models</category_slug>
+		<category_summary>Models summary</category_summary>
+		<category_thumbnail>assets/images/models.svg</category_thumbnail>
+    </category>
+	<category>
+		<category_id>5</category_id>
+   		<category_name>Design</category_name>
+		<category_slug>design</category_slug>
+		<category_summary>Design summary</category_summary>
+		<category_thumbnail>assets/images/design.svg</category_thumbnail>
+    </category> 
+	<category>
+		<category_id>6</category_id>
+   		<category_name>Museums</category_name>
+		<category_slug>museums-name-2</category_slug>
+		<category_summary>Museums summary 2</category_summary>
+		<category_thumbnail>assets/images/museums.svg</category_thumbnail>
+    </category> 
+	<category>
+		<category_id>7</category_id>
+   		<category_name>Events</category_name>
+		<category_slug>events</category_slug>
+		<category_summary>Events summary 3</category_summary>
+		<category_thumbnail>assets/images/events.svg</category_thumbnail>
+    </category>
+	<category>
+		<category_id>8</category_id>
+   		<category_name>Interactive</category_name>
+		<category_slug>interactive</category_slug>
+		<category_summary>Interactive summary</category_summary>
+		<category_thumbnail>assets/images/interactive.svg</category_thumbnail>
+    </category> 
+	<category>
+		<category_id>9</category_id>
+   		<category_name>Fabrication</category_name>
+		<category_slug>fabrication</category_slug>
+		<category_summary>Fabrication summary</category_summary>
+		<category_thumbnail>assets/images/fabrication.svg</category_thumbnail>
     </category> 
    </categories>
 </layout>
