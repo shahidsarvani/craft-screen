@@ -3,7 +3,7 @@ html {
     overflow-x: hidden;
 }
 body {
-    background-color: #fffbf0;
+    background-color: #242d30;
     overflow-x: hidden;
 }
 
@@ -15,6 +15,7 @@ body {
 }
 .logo img {
     max-width: 250px;
+    filter: invert(100%) sepia(42%) saturate(112%) hue-rotate(327deg) brightness(110%) contrast(100%);
 }
 .link-list {
     list-style-type: none;
@@ -31,6 +32,7 @@ body {
 .link-list li a img {
     width: 500px;
     height: 55px;
+    filter: invert(100%) sepia(42%) saturate(112%) hue-rotate(327deg) brightness(110%) contrast(100%);
 
 }
 
@@ -45,7 +47,7 @@ body {
 }
 .fav-link {
     font-size: 32px;
-    color: #000;
+    color: #FFF;
     text-decoration: none;
 }
 
@@ -64,6 +66,7 @@ body {
 }
 .img-single a img {
     width: 100%;
+    min-height: 100%;
     border-radius: 10px;
 }
 .heart-icon i {
@@ -99,10 +102,13 @@ body {
     cursor: pointer;
     transition: all 0.6s ease-in-out;
 }
+.category-logo {
+    filter: invert(100%) sepia(42%) saturate(112%) hue-rotate(327deg) brightness(110%) contrast(100%);
+}
 .menu-tab div {
     width: 33px;
     height: 4px;
-    background-color: black;
+    background-color: white;
     display: block;
     margin: 5px 28px;
     transition: all 0.6s ease-in-out;
@@ -114,10 +120,10 @@ body {
 .menu-tab.active {
     position: fixed;
     z-index: 100;
-    top: 40px;
+    top: 10px;
     left: 570px;
     transition: all 600ms ease-in-out;
-    background-color: rgba(255, 255, 255, 0.2);
+    
 }
 .menu-tab.active #one {
     transform: translateY(9px) rotate(-135deg);
@@ -169,12 +175,11 @@ body {
 }
 /*end of menu-hide*/
 .menu-hide.show {
-   opacity: 1;
+    opacity: 1;
     left: 0px;
-    background-color: #e1eedd;
+    background-color: #242e30;
     transition: all 0.6s ease-in-out;
 }
-
 
 
 .menu-nav-list {
@@ -187,6 +192,7 @@ body {
 }
 .menu-nav-list li a img {
     height: 50px;
+    filter: invert(100%) sepia(42%) saturate(112%) hue-rotate(327deg) brightness(110%) contrast(100%);
 }
 
 

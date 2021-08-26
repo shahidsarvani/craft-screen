@@ -7,4 +7,8 @@ $(document).ready(function(){
       $('.menu-hide').removeClass('show');
       $('.menu-tab').removeClass('active');
     });
+
+
+    lazyload();
+
   });
