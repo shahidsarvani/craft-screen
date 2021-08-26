@@ -1,6 +1,12 @@
+
+html {
+    overflow-x: hidden;
+}
 body {
     background-color: #fffbf0;
+    overflow-x: hidden;
 }
+
 .logo {
     display: flex;
     justify-content: flex-end;
@@ -26,7 +32,49 @@ body {
     max-width: 650px;
 
 }
+.top-single {
+    padding: 40px;
+}
+.top-single a img {
+    max-width: 650px;
+}
+.top-single {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.fav-link {
+    font-size: 32px;
+    color: #000;
+    text-decoration: none;
+}
 
 .link-list li a:hover img{
     filter: invert(19%) sepia(44%) saturate(6849%) hue-rotate(293deg) brightness(114%) contrast(129%);
+}
+.w-100 {
+    width: 100%;
+}
+.container-custom {
+    max-width: 1700px;
+    margin: 0 auto;
+}
+.img-single {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.img-single a img {
+    width: 100%;
+    border-radius: 10%;
+}
+.heart-icon i {
+    color: red;
+    position: absolute;
+    bottom: 10px;
+    right: 22px;
+    font-size: 25px;
+}
+.heart-icon {
+    cursor: pointer;
 }
