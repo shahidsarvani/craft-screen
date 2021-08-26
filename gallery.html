@@ -13,12 +13,27 @@
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/lazyload.js"></script>  
     <script>
-        $('.gallery-row').infiniteScroll({
-     // options
-     path: '.pagination__next',
-     append: '.post',
-     history: false,
-    });
+      
+$('.gallery-row').infiniteScroll({
+  path: getPenPath,
+  append: '.post',
+  scrollThreshold: 500,
+  status: '.page-load-status',
+});
+
+//-------------------------------------//
+// hack CodePen to load pens as pages
+
+function getPenPath() {
+  const nextPenSlugs = [
+    '3d9a3b8092ebcf9bc4a72672b81df1ac',
+    '2cde50c59ea73c47aec5bd26343ce287',
+    'd83110c5f71ea23ba5800b6b1a4a95c4',
+  ];
+
+  let slug = nextPenSlugs[ this.loadCount ];
+  if ( slug ) return `/desandro/debug/${slug}`;
+}
     </script>
 </head>
 <body>  
@@ -396,7 +411,16 @@
 
 
 
-
+                <div class="page-load-status">
+                    <div class="loader-ellips infinite-scroll-request">
+                      <span class="loader-ellips__dot"></span>
+                      <span class="loader-ellips__dot"></span>
+                      <span class="loader-ellips__dot"></span>
+                      <span class="loader-ellips__dot"></span>
+                    </div>
+                    <p class="infinite-scroll-last">End of content</p>
+                    <p class="infinite-scroll-error">No more pages to load</p>
+                  </div>
                
                 
              </div>
