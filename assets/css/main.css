@@ -79,7 +79,7 @@ body {
 }
 .img-single a img {
     width: 100%;
-    min-height: 100%;
+    height: 100% !important;
     border-radius: 10px;
 }
 .heart-icon i {
