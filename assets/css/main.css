@@ -20,12 +20,12 @@ body {
 .link-list {
     list-style-type: none;
     margin: 0;
-    height: 1080px;
+    
     flex-direction: column;
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: -285px;
+    
 }
 .link-list li {
     padding-bottom: 25px;
