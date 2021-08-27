@@ -7,9 +7,10 @@ body {
 }
 
 .logo {
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    right: 0px;
     padding: 40px 40px 0px 0px;
+
 
 }
 .logo img {
@@ -101,6 +102,12 @@ body {
     font-size: 3em;
     color: white;
     font-weight: 800;
+}
+.main-menu {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .menu-tab {
     width: 90px;
