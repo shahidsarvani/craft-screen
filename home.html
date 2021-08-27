@@ -46,6 +46,8 @@
 		jQuery(document).ready(function($){	 
 			
 			$("#fetch_site_logo").css("display", "flex");
+			$("#fetch_site_logo").fadeIn("slow");
+			$("#fetch_categories_data .main-menu").fadeIn("slow");
 			
 			var random_number1 = Math.floor(Math.random() * 100);  
 			var xmlDoc = readXml("./xml/layout.xml?rm="+random_number1); 
@@ -93,8 +95,11 @@
 	
 function operate_cateogory_items(sel_cateid, show_fav){
 	jQuery(document).ready(function($){	 
-		$("#fetch_site_logo").css("display", "none");
-		//lert( sel_cateid );
+		//$("#fetch_site_logo").css("display", "none");
+		$("#fetch_site_logo").fadeOut("slow");
+		$("#fetch_categories_data .main-menu").fadeOut("slow");
+		
+		//alert( sel_cateid );
 		var random_number1 = Math.floor(Math.random() * 100);
 		var xmlDoc = readXml("./xml/categories-gallery-items.xml?rm="+random_number1); 
 		var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
