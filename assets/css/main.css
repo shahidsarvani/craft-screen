@@ -59,6 +59,10 @@ body {
     color: #FFF;
     text-decoration: none;
 }
+.fav-link:hover {
+ color: #f37445;
+}
+
 
 .link-list li a:hover img{
     filter: invert(57%) sepia(28%) saturate(2826%) hue-rotate(332deg) brightness(99%) contrast(92%);
@@ -79,7 +83,7 @@ body {
     border-radius: 10px;
 }
 .heart-icon i {
-    color: #0d6efd;
+    color: #f37445;
     position: absolute;
     bottom: 10px;
     right: 22px;
