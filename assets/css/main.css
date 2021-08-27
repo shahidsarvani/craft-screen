@@ -231,7 +231,14 @@ body {
   .spl-footer {
       display: none;
   }
-
+  .play-icon {
+    position: absolute;
+    width: 90px !important;
+    background: none;
+    left: 40%;
+    top: 7%;
+    filter: invert(57%) sepia(28%) saturate(2826%) hue-rotate(332deg) brightness(99%) contrast(92%);
+}
 
 
 
