@@ -52,6 +52,7 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    min-height: 90px;
 }
 .fav-link {
     font-size: 32px;
@@ -121,7 +122,6 @@ body {
     height: 70px;
     top: 45px;
     left: 28px;
-    position: absolute;
     cursor: pointer;
     transition: all 0.6s ease-in-out;
 }
@@ -133,11 +133,11 @@ body {
     height: 4px;
     background-color: white;
     display: block;
-    margin: 5px 28px;
+    margin: 5px 0px;
     transition: all 0.6s ease-in-out;
 }
 .menu-tab div:nth-child(1) {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 /*end of menu-tab*/
 .menu-tab.active {
@@ -246,6 +246,7 @@ body {
     height: 40vh;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
 
 }
 

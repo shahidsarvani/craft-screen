@@ -163,7 +163,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 									 */ 
 									/// <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" />
 				
-									item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-upp"></i></span></a> </div>';
+									item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>';
 								 
 								}else{
 								
@@ -189,7 +189,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					var ret_items_txt = ''; 
 					var sel_cate_thumbnail = './assets/images/interactive.svg'; /* default */
 					var sel_cate_nav_cls;
-					var ret_items_menu = '<div class="top-single"> <div class="d-flex"> <div class="menu-tab"> <div id="one"></div> <div id="two"></div> <div id="three"></div> </div>';
+					var ret_items_menu = '<div class="top-single row"> <div class="d-flex col-md-4"> <div class="menu-tab"> <div id="one"></div> <div id="two"></div> <div id="three"></div> </div>';
 					
 					var random_number3 = Math.floor(Math.random() * 100);  
 					var xmlDoc3 = readXml("./xml/layout.xml?rm="+random_number3); 
@@ -220,9 +220,9 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					}
 					
 					if(show_fav == 1){ 
-						ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites</a> </div>'; 
+						ret_items_menu += '</div><div class="col-md-4 text-center"> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a></div><div class="col-md-4 text-end"> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear <i class="fa fa-times"></i></a></div> </div>'; 
 					}else{
-						ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt">Favorites ('+fav_nums+')</a> </div>'; 
+						ret_items_menu += '</div><div class="col-md-4 text-center"> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> </div><div class="col-md-4 text-end"> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt"><i class="fa fa-thumbs-up"></i> ('+fav_nums+')</a></div> </div>'; 
 					} 
 					
 					if(item_txt === ''){
