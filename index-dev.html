@@ -211,13 +211,12 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					}
 					
 					if(show_fav == 1){ 
-						ret_items_menu += '</div> <a href="./index-dev.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites</a> </div>'; 
-					}else{
-						ret_items_menu += '</div> <a href="./index-dev.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt">Favorites ('+fav_nums+')</a> </div>'; 
+						ret_items_menu += '</div> <a href="./index-dev.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear <i class="fa fa-times"></i></a> </div>'; 
+					}else{ 
+						ret_items_menu += '</div> <a href="./index-dev.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt"><i class="fa fa-thumbs-up"></i> ('+fav_nums+')</a> </div>'; 
 					} 
 					
-					if(item_txt === ''){
-					 
+					if(item_txt === ''){ 
 						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div> </div> </div> </div>';
 					}else{
 						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> '+ item_txt +' </div> </div> </div>';	 
@@ -261,10 +260,10 @@ function operate_cateogory_items(sel_cateid, show_fav){
 								$('.loading').hide();
 								resp_data = resp_data.trim();
 								
-								if($('#fetch_favorite_txt').html() == "Clear Favorites"){
+								if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
 									/* leaave it */
 								}else{
-									$('#fetch_favorite_txt').html("Favorites ("+resp_data+")");
+									$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+resp_data+")");
 								}  
 								//$('#fetch_home_contents').html(resp_data);    
 							}
