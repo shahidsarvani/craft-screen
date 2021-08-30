@@ -5,32 +5,50 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="./assets/css/style.css" /> 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./assets/css/main.css" />
+	<script src="./assets/js/jquery-3.6.0.min.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+	<script src="./assets/js/lazyload.js"></script> 
+	<script>  
+		//-------------------------------------//
+		// hack CodePen to load pens as pages
+		
+		function getPenPath() {
+		  const nextPenSlugs = [
+			'3d9a3b8092ebcf9bc4a72672b81df1ac',
+			'2cde50c59ea73c47aec5bd26343ce287',
+			'd83110c5f71ea23ba5800b6b1a4a95c4',
+		  ];
+		
+		  let slug = nextPenSlugs[ this.loadCount ];
+		  if ( slug ) return `/desandro/debug/${slug}`;
+		}
+    </script> 
 </head>
 <body>  
-<h1>Welcome to Craft Screen Development</h1> 
-<div class="wrapper">
-	<div class="container">  
-	
-		<div class="row" id="fetch_categories_data">
-			 Loading...
-		</div> 
-	
-	</div>
+
+<div class="logo" id="fetch_site_logo">
+   <a href="#"><img src="./assets/images/logo.svg" /></a> 
 </div>
 
-<script src="./assets/js/jquery-3.6.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="./assets/js/custom.js"></script>  
+<div id="fetch_categories_data"> Loading... </div> 
+
+<!--<script src="./assets/js/custom.js"></script>  -->
 <script src="./assets/js/spotlight.bundle.js"></script>
+
 <script>   
 	operate_main_cateogories();
 	
 	function operate_main_cateogories(){
 	
 		jQuery(document).ready(function($){	 
-	
+			
+			$("#fetch_site_logo").css("display", "flex");
+			$("#fetch_site_logo").fadeIn("slow");
+			$("#fetch_categories_data .main-menu").fadeIn("slow");
+			
 			var random_number1 = Math.floor(Math.random() * 100);  
 			var xmlDoc = readXml("./xml/layout.xml?rm="+random_number1); 
 			var configObj = xmlDoc.getElementsByTagName("config"); 
@@ -43,10 +61,8 @@
 			var site_copyright_text = configObj[0].getAttribute('site_copyright_text');
 			var no_of_items_per_page = configObj[0].getAttribute('no_of_items_per_page'); 
 			
-			var categoryObj = xmlDoc.getElementsByTagName("categories");
-			localStorage.setItem("mycategoryObj", categoryObj);   
-			
-			var total_category_nums = categoryObj[0].getElementsByTagName("category").length; 
+			var categoryObj = xmlDoc.getElementsByTagName("categories");  
+			var total_category_nums = categoryObj[0].getElementsByTagName("category").length;  
 			 
 			//var filenameVal = categoryObj[0].getElementsByTagName("category_item")[paras2].getElementsByTagName("filename")[0].childNodes[0].nodeValue;
 			
@@ -59,48 +75,54 @@
 				var category_summary = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
 				var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue; 
 			
-				cate_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" class="img-thumbnail" /></a> <h2 class="heading"><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"> '+category_name+' </a></h2> <div class="summary_txt">'+category_summary+'</div> </div>';
+				cate_txt += '<li><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" /></a></li>';
 				
 			}
-					 
-			$("#fetch_categories_data").html( cate_txt );	  
-				  
-			/*
-			if(site_logo_img != ''){
-				$("#fetch_site_logo_img").attr("src", site_logo_img ); 
-			} */
-										
-			/*if(localStorage.getItem("my_tmp_file_name")){
-				localStorage.removeItem("my_tmp_file_name");
-			}*/
+       		
+			setTimeout(() => { 
+				var ret_cate_txt = '';
+				if(cate_txt === ''){
+					ret_cate_txt = '<strong> No record found! </strong>';
+				}else{
+					ret_cate_txt = '<div class="main-menu"><ul class="link-list">' + cate_txt + '</ul></div>';  
+				}
+		  
+				$("#fetch_categories_data").html( ret_cate_txt );	  
+				
+			},600);
 		}); 
 	}
 	
-	function operate_cateogory_items(sel_cateid, show_fav){
-		jQuery(document).ready(function($){	 
-			//lert( sel_cateid );
-			var random_number1 = Math.floor(Math.random() * 100);
-			var xmlDoc = readXml("./xml/categories-gallery-items.xml?rm="+random_number1); 
-			var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
-			var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
-			var total_gallery_items_nums = CategoryItemObj.length; 
-			  
-			var contrs;  
-			var saved_items_arrs = [];  
-			var random_number2 = Math.floor(Math.random() * 100);
-			readTextFile("./records.json?rm="+random_number2, function(resp_txts){
-				var sel_rows = JSON.parse(resp_txts);    
-				for (contrs = 0; contrs < sel_rows.length; contrs++) {
-					var db_item_id =  sel_rows[contrs]["item_id"];
-					saved_items_arrs.push( db_item_id ); 
-					/*var visitor_id =  datas[0]["visitor_id"];
-					var category_id =  datas[0]["category_id"];*/  
-				}   
-			});
+function operate_cateogory_items(sel_cateid, show_fav){
+	jQuery(document).ready(function($){	 
+		//$("#fetch_site_logo").css("display", "none");
+		$("#fetch_site_logo").fadeOut("slow");
+		$("#fetch_categories_data .main-menu").fadeOut("slow");
+		
+		//alert( sel_cateid );
+		var random_number1 = Math.floor(Math.random() * 100);
+		var xmlDoc = readXml("./xml/categories-gallery-items.xml?rm="+random_number1); 
+		var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
+		var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
+		var total_gallery_items_nums = CategoryItemObj.length; 
+		  
+		var contrs1;  
+		var saved_items_arrs = [];  
+		var random_number2 = Math.floor(Math.random() * 100);
+		readTextFile("./records.json?rm="+random_number2, function(resp_txts){
+			var sel_rows = JSON.parse(resp_txts);    
+			for (contrs1 = 0; contrs1 < sel_rows.length; contrs1++) {
+				var db_item_id = sel_rows[contrs1]["item_id"];
+				saved_items_arrs.push( db_item_id ); 
+				/*var visitor_id =  datas[0]["visitor_id"];
+				var category_id =  datas[0]["category_id"];*/  
+			}   
+		});
 			
 		setTimeout(() => {   
 				
 			var item_txt = '';
+
 			var fav_nums = 0; 
 			var cntrs;
 			for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++) {
@@ -120,9 +142,13 @@
 		
 					var fav_cls_val = ''; 
 					//alert( saved_items_arrs[0] + " <<====>> " + item_id); //item_id
-					 if(saved_items_arrs.indexOf(item_id) !== -1){ 
-					 	 fav_cls_val = 'favorite-cls'; 
-						 fav_nums = fav_nums + 1;
+					
+					 if(saved_items_arrs.length){
+						 if(saved_items_arrs.indexOf(item_id) !== -1){ 
+							 fav_cls_val = 'favorite-cls'; 
+							 fav_nums = fav_nums + 1;
+						 
+						 } 
 					 } 
 					 
 					 if(show_fav == 1 && fav_cls_val == 'favorite-cls'){
@@ -133,11 +159,11 @@
 							 */ 
 							/// <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" />
 		
-							item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
-						
+							item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>';
+						 
 						}else{
 						
-							item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>';
+							item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>';
 						}
 					   
 					 
@@ -145,11 +171,11 @@
 					 
 					 	 if(item_video_url != ''){
 						 
-						 	item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
+						 	item_txt += '<div class="col-md-3 img-single position-relative"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>'; 
 						
 						 }else{
 						 
-						 	item_txt += '<div class="col-md-4 col-sm-12 item_thumb"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'">favorite</a> <h2 class="heading"> '+item_name+' </h2> <div class="summary_txt">'+item_summary+'</div> </div>'; 
+						 	item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>'; 
 						 
 						 }
 					 }
@@ -157,16 +183,54 @@
 				} 
 			}
 			
-			var ret_items_txt = '';
+			var ret_items_txt = ''; 
+			var sel_cate_thumbnail = './assets/images/interactive.svg'; /* default */
+			var sel_cate_nav_cls;
+			var ret_items_menu = '<div class="top-single"> <div class="d-flex"> <div class="menu-tab"> <div id="one"></div> <div id="two"></div> <div id="three"></div> </div>';
+			
+			var random_number3 = Math.floor(Math.random() * 100);  
+			var xmlDoc3 = readXml("./xml/layout.xml?rm="+random_number3); 
+			
+			if(xmlDoc3.getElementsByTagName("categories").length){  
+				var cateObj = xmlDoc3.getElementsByTagName("categories"); 
+				var total_category_num = cateObj[0].getElementsByTagName("category").length; 
+				 
+				var cntrc; 
+				ret_items_menu += '<div class="menu-hide"> <nav> <ul class="menu-nav-list">';
+				for (cntrc = 0; cntrc < total_category_num; cntrc++) {
+					var category_id = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_id")[0].childNodes[0].nodeValue;
+					var category_name = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_name")[0].childNodes[0].nodeValue;
+					var category_slug = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_slug")[0].childNodes[0].nodeValue;
+					var category_summary = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
+					var category_thumbnail = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue; 
+					
+					sel_cate_nav_cls = '';
+					if(category_id == sel_cateid){
+						sel_cate_thumbnail = category_thumbnail;
+						sel_cate_nav_cls = 'active';
+					}
+					
+					ret_items_menu += '<li class="' + sel_cate_nav_cls + '"><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" /></a></li>'; 
+				}
+				
+				ret_items_menu += '</ul> </nav> </div>'; 
+			} 
+			
+			ret_items_menu += '</div> <a href="./home.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');">Favorites ('+fav_nums+')</a> </div>'; 
+			
 			if(item_txt === ''){
-				ret_items_txt += '<div class="spotlight-group"> No record found! </div>';
-			}else{ 
-				ret_items_txt += '<div class="spotlight-group"> '+ item_txt +' </div>';
+				//ret_items_txt += '<div class="spotlight-group"> No record found! </div>';
+				ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-3 img-single position-relative"> No record found! </div> </div> </div> </div>';
+			}else{
+				ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> '+ item_txt +' </div> </div> </div>';	 
+				//ret_items_txt += '<div class="spotlight-group"> '+ item_txt +' </div>';
 			}
 			
-			$("#fetch_categories_data").html(' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> &nbsp; | &nbsp; <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');"> Show Favorite ('+fav_nums+')</a> <br> ' + ret_items_txt );
+			/*$("#fetch_categories_data").html(' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> &nbsp; | &nbsp; <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');"> Show Favorite ('+fav_nums+')</a> <br> ' + ret_items_txt );*/
+			
+			$("#fetch_categories_data").html( ret_items_txt ); 
 			 
-			$(".operate-fav-cls").click(function() {
+			$("a.operate-fav-cls").click(function() {
 			 	var my_sel_category_id = $(this).attr("data-category-id");
 				var my_sel_item_id = $(this).attr("data-item-id");
 				
@@ -206,19 +270,30 @@
 					}
 				});  
 			});
+			
+			
+			$('.gallery-row').infiniteScroll({
+				path: getPenPath,
+				append: '.post',
+				scrollThreshold: 500,
+				status: '.page-load-status',
+			});
+			
+			$('.top-single .menu-tab').click(function(){
+				$('.menu-hide').toggleClass('show');
+				$('.menu-tab').toggleClass('active');
+			});
+			
+			$('.top-single a').click(function(){
+				$('.menu-hide').removeClass('show');
+				$('.menu-tab').removeClass('active');
+			}); 
+			
 			 
-		},600);
+		},800); 
 		
-		/*
-			var category_name = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_name")[0].childNodes[0].nodeValue;
-			var category_slug = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_slug")[0].childNodes[0].nodeValue;
-			var category_summary = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
-			var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue;  
-		}
-		$("#fetch_categories_data").html( cate_txt ); */
-		
-		});
-	}	
+	});
+}	
 	
 	
 	function readXml(xmlFile){  
@@ -252,5 +327,6 @@
 		rawFile.send(null);
 	}
 </script>
+
 </body>
 </html>
