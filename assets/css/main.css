@@ -232,9 +232,7 @@ body {
   .spl-footer {
       display: none;
   }
-  .loader-img {
-      width: 100px;
-  }
+  
   .play-icon {
     position: absolute;
     cursor: pointer;
