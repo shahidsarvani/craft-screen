@@ -11,10 +11,7 @@
 	<script src="./assets/js/jquery-3.6.0.min.js"></script> 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
 	<script src="./assets/js/lazyload.js"></script> 
-	<script>  
-		//-------------------------------------//
-		// hack CodePen to load pens as pages
-		
+	<script>
 		function getPenPath() {
 		  const nextPenSlugs = [
 			'3d9a3b8092ebcf9bc4a72672b81df1ac',
@@ -43,8 +40,8 @@
 	
 	function operate_main_cateogories(){
 	
-		jQuery(document).ready(function($){	  
-			$('.loading').show();	
+		jQuery(document).ready(function($){
+			//$('.loading').show();	
 			$("#fetch_site_logo").css("display", "flex");
 			$("#fetch_site_logo").fadeIn("slow");
 			$("#fetch_categories_data .main-menu").fadeIn("slow");
@@ -76,7 +73,6 @@
 				var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue; 
 			
 				cate_txt += '<li><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" /></a></li>';
-				
 			}
        		
 			setTimeout(() => { 
@@ -87,7 +83,7 @@
 					ret_cate_txt = '<div class="main-menu"><ul class="link-list">' + cate_txt + '</ul></div>';  
 				}
 		  		
-				$('.loading').hide();
+				//$('.loading').hide();
 				$("#fetch_categories_data").html( ret_cate_txt );	  
 				
 			},600);
@@ -121,7 +117,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			}   
 		});
 			
-		setTimeout(() => {   
+		setTimeout(() => {
 				
 			var item_txt = '';
 
@@ -181,7 +177,6 @@ function operate_cateogory_items(sel_cateid, show_fav){
 						 
 						 }
 					 }
-					 //onclick="operate_cateogory_items(\''+category_id+'\');"
 				} 
 			}
 			
@@ -216,13 +211,12 @@ function operate_cateogory_items(sel_cateid, show_fav){
 				}
 				
 				ret_items_menu += '</ul> </nav> </div>'; 
-			} 
+			}
 			
-			if(show_fav == 1){
-			
-				ret_items_menu += '</div> <a href="./index-dev.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites</a> </div>'; 
+			if(show_fav == 1){ 
+				ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites</a> </div>'; 
 			}else{
-				ret_items_menu += '</div> <a href="./index-dev.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt">Favorites ('+fav_nums+')</a> </div>'; 
+				ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt">Favorites ('+fav_nums+')</a> </div>'; 
 			} 
 			
 			if(item_txt === ''){
@@ -285,7 +279,6 @@ function operate_cateogory_items(sel_cateid, show_fav){
 				});  
 			});
 			
-			
 			$('.gallery-row').infiniteScroll({
 				path: getPenPath,
 				append: '.post',
@@ -301,8 +294,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			$('.top-single a').click(function(){
 				$('.menu-hide').removeClass('show');
 				$('.menu-tab').removeClass('active');
-			}); 
-			
+			});
 			 
 		},800); 
 		
