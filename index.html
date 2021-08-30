@@ -219,7 +219,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			
 			if(show_fav == 1){
 			
-				ret_items_menu += '</div> <a href="./home.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites </a> </div>'; 
+				ret_items_menu += '</div> <a href="./home.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites</a> </div>'; 
 			}else{
 				ret_items_menu += '</div> <a href="./home.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt">Favorites ('+fav_nums+')</a> </div>'; 
 			} 
@@ -265,16 +265,21 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					processData: false,
 					data: formData,
 					beforeSend: function(){
-						//$('.loading').show();
+						$('.loading').show();
 					},
 					success: function(resp_data){
-						//$('.loading').hide();
-						//$('#fetch_home_contents').html(resp_data); 
-						if(resp_data == 1){
-							alert("saved successfully!"); 
-						}else{ 
-							 alert("error while saving the selected item!"); 
-						} 
+						setTimeout(() => {
+							$('.loading').hide();
+						},500);
+						
+						resp_data = resp_data.trim();
+						
+						if($('#fetch_favorite_txt').html() == "Clear Favorites"){
+						 	/* leaave it */
+						}else{
+							$('#fetch_favorite_txt').html("Favorites ("+resp_data+")");
+						}  
+						//$('#fetch_home_contents').html(resp_data);    
 					}
 				});  
 			});
