@@ -107,7 +107,6 @@ function operate_cateogory_items(sel_cateid, show_fav){
 		var contrs1;  
 		var saved_items_arrs = [];  
 		var random_number2 = Math.floor(Math.random() * 100);
-		//readTextFile("./records.json?rm="+random_number2, function(resp_txts){
 		
 		var rawFile = new XMLHttpRequest();
 		rawFile.overrideMimeType("application/json");
@@ -125,11 +124,11 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					var category_id =  datas[0]["category_id"];*/  
 				}
 						
-					var item_txt = '';
-		
+					var item_txt = ''; 
 					var fav_nums = 0; 
 					var cntrs;
-					for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++) {
+					/*for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++)*/
+					for (cntrs = 0; cntrs < 10; cntrs++) {
 						var item_parent_id = CategoryItemObj[cntrs].getAttribute('parent_id');
 						if(item_parent_id == sel_cateid){ 
 						
@@ -144,32 +143,24 @@ function operate_cateogory_items(sel_cateid, show_fav){
 								item_video_url = CategoryItemObj[cntrs].getElementsByTagName("item_video_url")[0].childNodes[0].nodeValue;
 							}
 				
-							var fav_cls_val = ''; 
-							//alert( saved_items_arrs[0] + " <<====>> " + item_id); //item_id
-							
-							 if(saved_items_arrs.length){
-								 if(saved_items_arrs.indexOf(item_id) !== -1){ 
-									 fav_cls_val = 'favorite-cls'; 
-									 fav_nums = fav_nums + 1;
-								 
-								 } 
-							 } 
+							var fav_cls_val = '';    
+							if(saved_items_arrs.length){
+								if(saved_items_arrs.indexOf(item_id) !== -1){ 
+									fav_cls_val = 'favorite-cls'; 
+									fav_nums = fav_nums + 1; 
+								} 
+							} 
 							 
 							 if(show_fav == 1 && fav_cls_val == 'favorite-cls'){
 							   
-								if(item_video_url != ''){
-									/* data-src-webm="https://nextapps.de/video/spotlight/big_buck_bunny.webm" data-src-ogg="https://nextapps.de/video/spotlight/big_buck_bunny.ogv"  
-									<a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'">
-									 */ 
-									/// <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" />
+								if(item_video_url != ''){ 
 				
-									item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>';
+									item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-upp"></i></span></a> </div>';
 								 
 								}else{
 								
 									item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>';
-								}
-							   
+								} 
 							 
 							 }else if(show_fav == 0){
 							 
@@ -187,9 +178,9 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					}
 					
 					var ret_items_txt = ''; 
-					var sel_cate_thumbnail = './assets/images/interactive.svg'; /* default */
+					var sel_cate_thumbnail = './assets/images/interactive.svg';  
 					var sel_cate_nav_cls;
-					var ret_items_menu = '<div class="top-single row"> <div class="d-flex col-md-4"> <div class="menu-tab"> <div id="one"></div> <div id="two"></div> <div id="three"></div> </div>';
+					var ret_items_menu = '<div class="top-single"> <div class="d-flex"> <div class="menu-tab"> <div id="one"></div> <div id="two"></div> <div id="three"></div> </div>';
 					
 					var random_number3 = Math.floor(Math.random() * 100);  
 					var xmlDoc3 = readXml("./xml/layout.xml?rm="+random_number3); 
@@ -220,20 +211,17 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					}
 					
 					if(show_fav == 1){ 
-						ret_items_menu += '</div><div class="col-md-4 text-center"> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a></div><div class="col-md-4 text-end"> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear <i class="fa fa-times"></i></a></div> </div>'; 
-					}else{
-						ret_items_menu += '</div><div class="col-md-4 text-center"> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> </div><div class="col-md-4 text-end"> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt"><i class="fa fa-thumbs-up"></i> ('+fav_nums+')</a></div> </div>'; 
+						ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear <i class="fa fa-times"></i></a> </div>'; 
+					}else{ 
+						ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt"><i class="fa fa-thumbs-up"></i> ('+fav_nums+')</a> </div>'; 
 					} 
 					
-					if(item_txt === ''){
-						//ret_items_txt += '<div class="spotlight-group"> No record found! </div>';
+					if(item_txt === ''){ 
 						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div> </div> </div> </div>';
 					}else{
 						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> '+ item_txt +' </div> </div> </div>';	 
-						//ret_items_txt += '<div class="spotlight-group"> '+ item_txt +' </div>';
-					}
-					
-					/*$("#fetch_categories_data").html(' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> &nbsp; | &nbsp; <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');"> Show Favorite ('+fav_nums+')</a> <br> ' + ret_items_txt );*/
+						 
+					} 
 					
 					$('.loading').hide();
 					
@@ -272,10 +260,10 @@ function operate_cateogory_items(sel_cateid, show_fav){
 								$('.loading').hide();
 								resp_data = resp_data.trim();
 								
-								if($('#fetch_favorite_txt').html() == "Clear Favorites"){
+								if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
 									/* leaave it */
 								}else{
-									$('#fetch_favorite_txt').html("Favorites ("+resp_data+")");
+									$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+resp_data+")");
 								}  
 								//$('#fetch_home_contents').html(resp_data);    
 							}
@@ -303,8 +291,6 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			}
 		
 		rawFile.send(null);
-		 
-		//});
 	});
 }	
 	
