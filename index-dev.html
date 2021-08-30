@@ -25,7 +25,7 @@
 		  let slug = nextPenSlugs[ this.loadCount ];
 		  if ( slug ) return `/desandro/debug/${slug}`;
 		}
-    </script> 
+    </script>  
 </head>
 <body>  
 
@@ -43,8 +43,8 @@
 	
 	function operate_main_cateogories(){
 	
-		jQuery(document).ready(function($){	 
-			
+		jQuery(document).ready(function($){	  
+			$('.loading').show();	
 			$("#fetch_site_logo").css("display", "flex");
 			$("#fetch_site_logo").fadeIn("slow");
 			$("#fetch_categories_data .main-menu").fadeIn("slow");
@@ -86,7 +86,8 @@
 				}else{
 					ret_cate_txt = '<div class="main-menu"><ul class="link-list">' + cate_txt + '</ul></div>';  
 				}
-		  
+		  		
+				$('.loading').hide();
 				$("#fetch_categories_data").html( ret_cate_txt );	  
 				
 			},600);
@@ -98,7 +99,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 		//$("#fetch_site_logo").css("display", "none");
 		$("#fetch_site_logo").fadeOut("slow");
 		$("#fetch_categories_data .main-menu").fadeOut("slow");
-		
+		$('.loading').show();
 		//alert( sel_cateid );
 		var random_number1 = Math.floor(Math.random() * 100);
 		var xmlDoc = readXml("./xml/categories-gallery-items.xml?rm="+random_number1); 
@@ -217,6 +218,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			} 
 			
 			if(show_fav == 1){
+			
 				ret_items_menu += '</div> <a href="./home.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites </a> </div>'; 
 			}else{
 				ret_items_menu += '</div> <a href="./home.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt">Favorites ('+fav_nums+')</a> </div>'; 
@@ -231,6 +233,8 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			}
 			
 			/*$("#fetch_categories_data").html(' <a href="javascript:void(0);" onclick="operate_main_cateogories();"> &laquo; Go Back </a> &nbsp; | &nbsp; <a href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');"> Show Favorite ('+fav_nums+')</a> <br> ' + ret_items_txt );*/
+			
+			$('.loading').hide();
 			
 			$("#fetch_categories_data").html( ret_items_txt ); 
 			 
@@ -261,15 +265,17 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					processData: false,
 					data: formData,
 					beforeSend: function(){
-						//$('.loading').show();
+						$('.loading').show();
 					},
 					success: function(resp_data){
-						//$('.loading').hide();
+						setTimeout(() => { 
+							$('.loading').hide();
+						},500);
 						//$('#fetch_home_contents').html(resp_data); 
 						if(resp_data == 1){
-							alert("saved successfully!"); 
+							//alert("saved successfully!"); 
 						}else{ 
-							 alert("error while saving the selected item!"); 
+							 //alert("error while saving the selected item!"); 
 						} 
 					}
 				});  
@@ -332,5 +338,8 @@ function operate_cateogory_items(sel_cateid, show_fav){
 	}
 </script>
 
+<div class="loading" style="display: none;">
+	<div class="content"><img src="./assets/images/loading.gif"/></div>
+</div>
 </body>
 </html>
