@@ -40,7 +40,7 @@
 	
 	function operate_main_cateogories(){
 	
-		jQuery(document).ready(function($){	  
+		jQuery(document).ready(function($){
 			//$('.loading').show();	
 			$("#fetch_site_logo").css("display", "flex");
 			$("#fetch_site_logo").fadeIn("slow");
@@ -116,7 +116,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			}   
 		});
 			
-		setTimeout(() => {   
+		setTimeout(() => {
 				
 			var item_txt = '';
 
@@ -156,11 +156,11 @@ function operate_cateogory_items(sel_cateid, show_fav){
 							 */ 
 							/// <img src="'+item_thumbnail+'" alt="'+item_name+'" class="img-thumbnail" />
 		
-							item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>';
+							item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-upp"></i></span></a> </div>';
 						 
 						}else{
 						
-							item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>';
+							item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>';
 						}
 					   
 					 
@@ -168,15 +168,14 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					 
 					 	 if(item_video_url != ''){
 						 
-						 	item_txt += '<div class="col-md-3 img-single position-relative"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>'; 
+						 	item_txt += '<div class="col-md-3 img-single position-relative"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>'; 
 						
 						 }else{
 						 
-						 	item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-heart"></i></span></a> </div>'; 
+						 	item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
 						 
 						 }
 					 }
-					 //onclick="operate_cateogory_items(\''+category_id+'\');"
 				} 
 			}
 			
@@ -211,10 +210,9 @@ function operate_cateogory_items(sel_cateid, show_fav){
 				}
 				
 				ret_items_menu += '</ul> </nav> </div>'; 
-			} 
+			}
 			
-			if(show_fav == 1){
-			
+			if(show_fav == 1){ 
 				ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear Favorites</a> </div>'; 
 			}else{
 				ret_items_menu += '</div> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt">Favorites ('+fav_nums+')</a> </div>'; 
