@@ -78,7 +78,7 @@
 			setTimeout(() => { 
 				var ret_cate_txt = '';
 				if(cate_txt === ''){
-					ret_cate_txt = '<strong> No record found! </strong>';
+					ret_cate_txt = '<strong> <h2 class="color-white">No record found!</h2> </strong>';
 				}else{
 					ret_cate_txt = '<div class="main-menu"><ul class="link-list">' + cate_txt + '</ul></div>';  
 				}
@@ -221,7 +221,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 			
 			if(item_txt === ''){
 				//ret_items_txt += '<div class="spotlight-group"> No record found! </div>';
-				ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-3 img-single position-relative"> No record found! </div> </div> </div> </div>';
+				ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-3 img-single position-relative"> <h2 class="color-white">No record found!</h2> </div> </div> </div> </div>';
 			}else{
 				ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> '+ item_txt +' </div> </div> </div>';	 
 				//ret_items_txt += '<div class="spotlight-group"> '+ item_txt +' </div>';
