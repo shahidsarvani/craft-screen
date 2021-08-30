@@ -227,7 +227,7 @@ function operate_cateogory_items(sel_cateid, show_fav){
 					
 					if(item_txt === ''){
 						//ret_items_txt += '<div class="spotlight-group"> No record found! </div>';
-						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-2 img-single position-relative"> <p class="text-white">No record found!</p> </div> </div> </div> </div>';
+						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div> </div> </div> </div>';
 					}else{
 						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> '+ item_txt +' </div> </div> </div>';	 
 						//ret_items_txt += '<div class="spotlight-group"> '+ item_txt +' </div>';
