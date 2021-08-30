@@ -242,6 +242,13 @@ body {
     top: 7%;
     filter: invert(57%) sepia(28%) saturate(2826%) hue-rotate(332deg) brightness(99%) contrast(92%);
 }
+.no-record-wrapper {
+    height: 40vh;
+    display: flex;
+    align-items: flex-end;
+
+}
+
 
 /* loading css starts */
 .loading {
