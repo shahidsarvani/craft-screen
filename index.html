@@ -53,7 +53,7 @@
 	 	 <a href="./index.html"><img id="fetch_detail_cate_img" class="category-logo" src="assets/images/digital.svg" /></a>
 	  </div>
 	   <div class="col-md-4 text-end">
-	  	<a class="fav-link" href="javascript:void(0);" id="fetch_favorite_txt" data-favorite-type="0" data-favorite-total="0"><i class="fa fa-thumbs-up"></i> <span class="numb-span">(0)</span></a>
+	  	<a class="fav-link d-flex justify-content-end align-items-center" href="javascript:void(0);" id="fetch_favorite_txt" data-favorite-type="0" data-favorite-total="0"><i class="fa fa-thumbs-up"></i> <span class="numb-span ms-1">(0)</span></a>
 	  </div>
 	  
 	 </div> <!-- onClick="operate_cateogory_fav_items();"-->
@@ -149,7 +149,7 @@
 				$("#fetch_category_gallery_items_data div.col-md-3").show(); 
 				
 				var fav_nums1 =$('#fetch_favorite_txt').attr("data-favorite-total");
-				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+fav_nums1+")</span>"); 
+				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums1+")</span>"); 
 			} 
 		}); 
 			
@@ -201,7 +201,7 @@
 					if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
 						/* skip it */
 					}else{
-						$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+resp_data+")</span>");
+						$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+resp_data+")</span>");
 					} 
 				}
 			});   
@@ -290,7 +290,7 @@
 						}else{
 							 
 							$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
-							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+fav_nums+")</span>");
+							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums+")</span>");
 						}
 						
 						
