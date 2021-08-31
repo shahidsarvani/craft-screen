@@ -11,10 +11,9 @@
 	<script src="./assets/js/jquery-3.6.0.min.js"></script> 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
 	<script src="./assets/js/lazyload.js"></script> 
-
-	
+	<script src="./assets/js/spotlight.bundle.js"></script>
 	<script>
-		function getPenPath() {
+		/*function getPenPath() {
 		  const nextPenSlugs = [
 			'3d9a3b8092ebcf9bc4a72672b81df1ac',
 			'2cde50c59ea73c47aec5bd26343ce287',
@@ -23,34 +22,57 @@
 		
 		  let slug = nextPenSlugs[ this.loadCount ];
 		  if ( slug ) return `/desandro/debug/${slug}`;
-		}
-		
+		}*/
     </script>  
 </head>
 <body>  
 
-<div class="logo" id="fetch_site_logo">
-   <a href="#"><img src="./assets/images/logo.svg" /></a> 
+<div id="fetch_section1_data">
+	<div class="logo" id="fetch_site_logo">
+	   <a href="index.html"><img src="./assets/images/logo.svg" /></a> 
+	</div> 
+	<div id="fetch_categories_data"> Loading... </div> 
 </div>
 
-<div id="fetch_categories_data"> Loading... </div> 
-
-<!--<script src="./assets/js/custom.js"></script>  -->
-<script src="./assets/js/spotlight.bundle.js"></script>
-
-<script>   
-	operate_main_cateogories();
-	
-	function operate_main_cateogories(){
-	
-		jQuery(document).ready(function($){
-			//$('.loading').show();	
-			$("#fetch_site_logo").css("display", "flex");
-			$("#fetch_site_logo").fadeIn("slow");
-			$("#fetch_categories_data .main-menu").fadeIn("slow");
-			
-			var random_number1 = Math.floor(Math.random() * 100);  
-			var xmlDoc = readXml("./xml/layout.xml?rm="+random_number1); 
+<div id="fetch_section2_data" style="display:none">    
+  <div class="container-custom">
+	<div class="top-single row">
+	  <div class="d-flex col-md-4">
+		<div class="menu-tab">
+		  <div id="one"></div>
+		  <div id="two"></div>
+		  <div id="three"></div>
+		</div>
+		<div class="menu-hide">
+		  <nav>
+			<ul class="menu-nav-list" id="fetch_leftside_menu"> </ul>
+		  </nav>
+		</div>
+	  </div>
+	  <div class="col-md-4 text-center">
+	 	 <a href="./index.html"><img id="fetch_detail_cate_img" class="category-logo" src="assets/images/digital.svg" /></a>
+	  </div>
+	   <div class="col-md-4 text-end">
+	  	<a class="fav-link" href="javascript:void(0);" id="fetch_favorite_txt" data-favorite-type="0" data-favorite-total="0"><i class="fa fa-thumbs-up"></i> <span class="numb-span">(0)</span></a>
+	  </div>
+	  
+	 </div> <!-- onClick="operate_cateogory_fav_items();"-->
+	<div class="w-100">
+	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
+		   
+	  </div>
+	</div>  
+  </div>
+	 
+</div>
+<script>     
+	jQuery(document).ready(function($){
+		$("#fetch_section1_data").fadeIn("slow");
+		/*$("#fetch_section2_data").fadeIn("slow");*/
+		
+		var random_number1 = Math.floor(Math.random() * 100);  
+		var xmlDoc = readXml("./xml/layout.xml?rm="+random_number1); 
+		if(xmlDoc){  
 			var configObj = xmlDoc.getElementsByTagName("config"); 
 			
 			var site_name = configObj[0].getAttribute('site_name');
@@ -63,10 +85,9 @@
 			
 			var categoryObj = xmlDoc.getElementsByTagName("categories");  
 			var total_category_nums = categoryObj[0].getElementsByTagName("category").length;  
-			 
-			//var filenameVal = categoryObj[0].getElementsByTagName("category_item")[paras2].getElementsByTagName("filename")[0].childNodes[0].nodeValue;
 			
 			var cate_txt = ''; 
+			var cate_leftside_txt = '';
 			var cntr;
 			for (cntr = 0; cntr < total_category_nums; cntr++) {
 				var category_id = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_id")[0].childNodes[0].nodeValue;
@@ -75,267 +96,358 @@
 				var category_summary = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
 				var category_thumbnail = categoryObj[0].getElementsByTagName("category")[cntr].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue; 
 			
-				cate_txt += '<li><a  class="'+ category_slug+'-cls" href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"><img src="'+category_thumbnail+'" class="svg-convert" alt="'+category_name+'" /></a></li>';
+				cate_txt += '<li><a class="'+ category_slug+'-cls" href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\', \''+category_name+'\', \''+category_thumbnail+'\', \'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" /></a></li>';
+				
+				cate_leftside_txt += '<li class=""><a class="'+ category_slug+'-cls" href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\', \''+category_name+'\', \''+category_thumbnail+'\', \'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'"></a></li>';
 			}
-       		
-			setTimeout(() => { 
+			
+			//setTimeout(() => { 
 				var ret_cate_txt = '';
 				if(cate_txt === ''){
 					ret_cate_txt = '<strong> <p class="text-white no-record-wrapper">No record found!</p> </strong>';
 				}else{
 					ret_cate_txt = '<div class="main-menu"><ul class="link-list">' + cate_txt + '</ul></div>';  
-				}
-		  		
-				//$('.loading').hide();
+				} 
+				 
 				$("#fetch_categories_data").html( ret_cate_txt );	  
+				$("#fetch_leftside_menu").html( cate_leftside_txt );	 
 				
-			},600);
-		}); 
-	}
-
-	
-function operate_cateogory_items(sel_cateid, show_fav){
-	$(document).ready(function($){	 
-		//$("#fetch_site_logo").css("display", "none");
-		$("#fetch_site_logo").fadeOut("slow");
-		$("#fetch_categories_data .main-menu").fadeOut("slow");
-		$('.loading').show();
-		//alert( sel_cateid );
-		var random_number1 = Math.floor(Math.random() * 100);
-		var xmlDoc = readXml("./xml/categories-gallery-items.xml?rm="+random_number1); 
-		var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
-		var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
-		var total_gallery_items_nums = CategoryItemObj.length; 
-		  
-		var contrs1;  
-		var saved_items_arrs = [];  
-		var random_number2 = Math.floor(Math.random() * 100);
+				/* infiniteScroll script starts */
+				/*$('.gallery-row').infiniteScroll({
+					path: getPenPath,
+					append: '.post',
+					scrollThreshold: 500,
+					status: '.page-load-status',
+				});*/
+				/* menu infiniteScroll ends */
+				
+				/* menu script starts */
+				$('.top-single .menu-tab').click(function(){
+					$('.menu-hide').toggleClass('show');
+					$('.menu-tab').toggleClass('active');
+				});
+				
+				$('.top-single a').click(function(){
+					$('.menu-hide').removeClass('show');
+					$('.menu-tab').removeClass('active');
+				});
+				/* menu script ends */
+				
+			//},600); 
+		}   
 		
-		var rawFile = new XMLHttpRequest();
-		rawFile.overrideMimeType("application/json");
-		rawFile.open("GET", "./records.json?rm="+random_number2, true);
-		rawFile.onreadystatechange = function() {
-			if (rawFile.readyState === 4 && rawFile.status == "200") {
+		$("a#fetch_favorite_txt").click(function() {   	
+			var data_favorite_type = $(this).attr("data-favorite-type");
+			 
+			if(data_favorite_type == 0){
+				$(this).attr("data-favorite-type", "1");
+				//$all_items.not(".favorite-item-cls").hide();  
+				$('div.col-md-3:not(.favorite-item-cls)').hide();
+				$('#fetch_favorite_txt').html('Clear <i class="fa fa-times"></i>');
+			}else{
+				$(this).attr("data-favorite-type", "0"); 
+				$("#fetch_category_gallery_items_data div.col-md-3").show(); 
+				
+				var fav_nums1 =$('#fetch_favorite_txt').attr("data-favorite-total");
+				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+fav_nums1+")</span>"); 
+			} 
+		}); 
 			
-				var resp_txts = rawFile.responseText;
-				
-				var sel_rows = JSON.parse(resp_txts);    
-				for (contrs1 = 0; contrs1 < sel_rows.length; contrs1++) {
-					var db_item_id = sel_rows[contrs1]["item_id"];
-					saved_items_arrs.push( db_item_id ); 
-					/*var visitor_id =  datas[0]["visitor_id"];
-					var category_id =  datas[0]["category_id"];*/  
+	});   
+	
+	
+	function operate_favourites(rand_nums){ 
+		//jQuery(document).ready(function($){	
+		$("a.operate-fav-cls").unbind("click"); 
+		$("a.operate-fav-cls").click(function() { 
+		
+			var my_sel_category_id = $(this).attr("data-category-id");
+			var my_sel_item_id = $(this).attr("data-item-id"); 
+			 
+			var item_status = 0;
+			if($(this).hasClass("favorite-cls")){ 
+				item_status = 0;
+				$(this).removeClass('favorite-cls'); 
+				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls');  
+				 
+			}else{
+				item_status = 1;
+				$(this).addClass('favorite-cls');
+				$("#cate_gallery_item_"+my_sel_item_id).addClass('favorite-item-cls');  
+			}
+		 
+			var formData = new FormData();
+			formData.append("visitor_id", '1');  
+			formData.append("category_id", my_sel_category_id);  
+			formData.append("item_id", my_sel_item_id);
+			formData.append("item_status", item_status);  
+						   
+			$.ajax({
+				cache: false,
+				method: "POST",
+				url: "script.php",
+				contentType: false,
+				processData: false,
+				data: formData,
+				beforeSend: function(){
+					$('.loading').show();
+				},
+				success: function(resp_data){ 
+					$('.loading').hide();
+					resp_data = resp_data.trim();
+					
+					$('#fetch_favorite_txt').attr("data-favorite-total", resp_data);
+					
+					if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
+						/* skip it */
+					}else{
+						$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+resp_data+")</span>");
+					} 
 				}
+			});   
+		});  
+	}	
+	
+	
+	function operate_cateogory_items(sel_cateid, sel_catename, sel_catethumbnail, show_fav){
+		jQuery(document).ready(function($){	   
+			$("#fetch_section1_data").fadeOut("slow");
+			$("#fetch_section2_data").fadeIn("slow");  
+			$('.loading').show();  
+			$("#fetch_detail_cate_img").attr('src', sel_catethumbnail);
+			$("#fetch_favorite_txt").attr("data-favorite-type", "0");
+			 
+			var fav_nums = 0;
+			var random_number1 = Math.floor(Math.random() * 100);
+			var xmlDoc = readXml("./xml/categories-gallery-items.xml?rm="+random_number1); 
+			var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
+			var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item"); 
+			if(CategoryItemObj.length){  
+			
+			 	var MatchedItems = new Array();
+				var cntrs0;
+				var cc =0;
+				for (cntrs0=0; cntrs0 < CategoryItemObj.length; cntrs0++) {
+					var item_parent_id = CategoryItemObj[cntrs0].getAttribute('parent_id');
+					if(item_parent_id == sel_cateid){ 
 						
-					var item_txt = ''; 
-					var fav_nums = 0; 
-					var cntrs;
-					/*for (cntrs = 0; cntrs < total_gallery_items_nums; cntrs++)*/
-					for (cntrs = 0; cntrs < 10; cntrs++) {
-						var item_parent_id = CategoryItemObj[cntrs].getAttribute('parent_id');
-						if(item_parent_id == sel_cateid){ 
+						var tempItems = new Array();
+						tempItems["item_id"] = CategoryItemObj[cntrs0].getElementsByTagName("item_id")[0].childNodes[0].nodeValue;
+						tempItems["item_name"] = CategoryItemObj[cntrs0].getElementsByTagName("item_name")[0].childNodes[0].nodeValue;
+						tempItems["item_slug"] = CategoryItemObj[cntrs0].getElementsByTagName("item_slug")[0].childNodes[0].nodeValue;
+						tempItems["item_summary"] = CategoryItemObj[cntrs0].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
+						tempItems["item_thumbnail"] = CategoryItemObj[cntrs0].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue;
+						tempItems["item_type"] = CategoryItemObj[cntrs0].getElementsByTagName("item_type")[0].childNodes[0].nodeValue; 
+						var item_type = CategoryItemObj[cntrs0].getElementsByTagName("item_type")[0].childNodes[0].nodeValue;
+						var item_video_url = ''; 
+						if(item_type == "video"){
+							item_video_url = CategoryItemObj[cntrs0].getElementsByTagName("item_video_url")[0].childNodes[0].nodeValue;
+						}
 						
-							var item_id = CategoryItemObj[cntrs].getElementsByTagName("item_id")[0].childNodes[0].nodeValue;
-							var item_name = CategoryItemObj[cntrs].getElementsByTagName("item_name")[0].childNodes[0].nodeValue;
-							var item_slug = CategoryItemObj[cntrs].getElementsByTagName("item_slug")[0].childNodes[0].nodeValue;
-							var item_summary = CategoryItemObj[cntrs].getElementsByTagName("item_summary")[0].childNodes[0].nodeValue;
-							var item_thumbnail = CategoryItemObj[cntrs].getElementsByTagName("item_thumbnail")[0].childNodes[0].nodeValue;
-							var item_type = CategoryItemObj[cntrs].getElementsByTagName("item_type")[0].childNodes[0].nodeValue;
-							var item_video_url = ''; 
-							if(item_type == "video"){
-								item_video_url = CategoryItemObj[cntrs].getElementsByTagName("item_video_url")[0].childNodes[0].nodeValue;
-							}
+						tempItems["item_video_url"] = item_video_url;
+						
+						MatchedItems[cc] = tempItems;  
+					
+						cc++;
+					}
+				} 
+				  
+				var total_gallery_items_nums = MatchedItems.length;   
+			
+				var contrs1;  
+				var cntrs; 
+				var item_txt ='';
+				var saved_items_arrs = [];  
+				var random_number2 = Math.floor(Math.random() * 100);
 				
-							var fav_cls_val = '';    
+				var rawFile = new XMLHttpRequest();
+				rawFile.overrideMimeType("application/json");
+				rawFile.open("GET", "./records.json?rm="+random_number2, true);
+				rawFile.onreadystatechange = function() { 
+					if (rawFile.readyState === 4 && rawFile.status == "200") {
+					 
+						var resp_txts = rawFile.responseText;
+						
+						var sel_rows = JSON.parse(resp_txts);    
+						for (contrs1 = 0; contrs1 < sel_rows.length; contrs1++) {
+							var db_item_id = sel_rows[contrs1]["item_id"];
+							saved_items_arrs.push( db_item_id );  
+						}
+						
+						var cntrsf; 
+						for (cntrsf=0; cntrsf < total_gallery_items_nums; cntrsf++) {
+							var item_idfv = MatchedItems[cntrsf]["item_id"];
+							
 							if(saved_items_arrs.length){
-								if(saved_items_arrs.indexOf(item_id) !== -1){ 
-									fav_cls_val = 'favorite-cls'; 
+								if(saved_items_arrs.indexOf(item_idfv) !== -1){  
 									fav_nums = fav_nums + 1; 
 								} 
 							} 
-							 
-							 if(show_fav == 1 && fav_cls_val == 'favorite-cls'){
-							   
-								if(item_video_url != ''){ 
-				
-									item_txt += '<div class="col-md-3 img-single position-relative">  <a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" /> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /></a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-upp"></i></span></a> </div>';
-								 
-								}else{
-								
-									item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>';
-								} 
-							 
-							 }else if(show_fav == 0){
-							 
-								 if(item_video_url != ''){
-								 
-									item_txt += '<div class="col-md-3 img-single position-relative"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>'; 
-								
-								 }else{
-								 
-									item_txt += '<div class="col-md-3 img-single position-relative"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
-								 
-								 }
-							 }
-						} 
-					}
-					
-					var ret_items_txt = ''; 
-					var sel_cate_thumbnail = './assets/images/interactive.svg';  
-					var sel_cate_nav_cls;
-					var ret_items_menu = '<div class="top-single row"> <div class="d-flex col-md-4"> <div class="menu-tab"> <div id="one"></div> <div id="two"></div> <div id="three"></div> </div>';
-					
-					var random_number3 = Math.floor(Math.random() * 100);  
-					var xmlDoc3 = readXml("./xml/layout.xml?rm="+random_number3); 
-					
-					if(xmlDoc3.getElementsByTagName("categories").length){  
-						var cateObj = xmlDoc3.getElementsByTagName("categories"); 
-						var total_category_num = cateObj[0].getElementsByTagName("category").length; 
-						 
-						var cntrc; 
-						ret_items_menu += '<div class="menu-hide"> <nav> <ul class="menu-nav-list">';
-						for (cntrc = 0; cntrc < total_category_num; cntrc++) {
-							var category_id = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_id")[0].childNodes[0].nodeValue;
-							var category_name = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_name")[0].childNodes[0].nodeValue;
-							var category_slug = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_slug")[0].childNodes[0].nodeValue;
-							var category_summary = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_summary")[0].childNodes[0].nodeValue;
-							var category_thumbnail = cateObj[0].getElementsByTagName("category")[cntrc].getElementsByTagName("category_thumbnail")[0].childNodes[0].nodeValue; 
-							
-							sel_cate_nav_cls = '';
-							if(category_id == sel_cateid){
-								sel_cate_thumbnail = category_thumbnail;
-								sel_cate_nav_cls = 'active';
-							}
-							
-							ret_items_menu += '<li class="'+ sel_cate_nav_cls +' '+ category_slug +'-cls"><a href="javascript:void(0);" onclick="operate_cateogory_items(\''+category_id+'\',\'0\');"><img src="'+category_thumbnail+'" alt="'+category_name+'" /></a></li>'; 
 						}
 						
-						ret_items_menu += '</ul> </nav> </div>'; 
-					}
-					
-					if(show_fav == 1){ 
-						ret_items_menu += '</div><div class="col-md-4 text-center"> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a></div> <div class="col-md-4 text-end"><a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'0\');" id="fetch_favorite_txt">Clear <i class="fa fa-times"></i></a></div> </div>'; 
-					}else{ 
-						ret_items_menu += '</div><div class="col-md-4 text-center"> <a href="./index.html"><img class="category-logo" src="'+sel_cate_thumbnail+'" /></a></div><div class="col-md-4 text-end"> <a class="fav-link" href="javascript:void(0);" onclick="operate_cateogory_items(\''+sel_cateid+'\',\'1\');" id="fetch_favorite_txt"><i class="fa fa-thumbs-up"></i> <span class="numb-span">('+fav_nums+')</span></a></div> </div>'; 
-					} 
-					
-					if(item_txt === ''){ 
-						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> <div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div> </div> </div> </div>';
-					}else{
-						ret_items_txt += '<div class="container-custom"> '+ ret_items_menu +' <div class="w-100"> <div class="row gallery-row d-flex justify-content-center"> '+ item_txt +' </div> </div> </div>';	 
-						 
-					} 
-					
-					$('.loading').hide();
-					
-					$("#fetch_categories_data").html( ret_items_txt ); 
-					 
-					$("a.operate-fav-cls").click(function() {
-						var my_sel_category_id = $(this).attr("data-category-id");
-						var my_sel_item_id = $(this).attr("data-item-id");
-						
-						var item_status = 0;
-						if($(this).hasClass("favorite-cls")){ 
-							item_status = 0;
-							$(this).removeClass('favorite-cls');
+						if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
+							/* skip it */
 						}else{
-							item_status = 1;
-							$(this).addClass('favorite-cls');
+							 
+							$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
+							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+fav_nums+")</span>");
 						}
-					 
-						var formData = new FormData();
-						formData.append("visitor_id", '1');  
-						formData.append("category_id", my_sel_category_id);  
-						formData.append("item_id", my_sel_item_id);
-						formData.append("item_status", item_status);  
-									   
-						$.ajax({
-							cache: false,
-							method: "POST",
-							url: "script.php",
-							contentType: false,
-							processData: false,
-							data: formData,
-							beforeSend: function(){
-								$('.loading').show();
-							},
-							success: function(resp_data){ 
-								$('.loading').hide();
-								resp_data = resp_data.trim();
+						
+						
+						var total_pages = (total_gallery_items_nums/12);
+						total_pages = Math.ceil(total_pages);   
+						var no_of_limits = (total_pages >1) ? 12 : total_gallery_items_nums; 
+						
+						for (cntrs=0; cntrs < no_of_limits; cntrs++) {
+							var item_id = MatchedItems[cntrs]["item_id"]; 
+							var item_name = MatchedItems[cntrs]["item_name"]; 
+							var item_slug = MatchedItems[cntrs]["item_slug"]; 
+							var item_summary = MatchedItems[cntrs]["item_summary"]; 
+							var item_thumbnail = MatchedItems[cntrs]["item_thumbnail"]; 
+							var item_type = MatchedItems[cntrs]["item_type"];   
+							var item_video_url = ''; 
+							if(item_type == "video"){
+								item_video_url = MatchedItems[cntrs]["item_video_url"]; 
+							}   	  
+								 
+							var fav_item_cls_val = fav_cls_val =  '';    
+							if(saved_items_arrs.length){
+								if(saved_items_arrs.indexOf(item_id) !== -1){ 
+									fav_cls_val = 'favorite-cls'; 
+									fav_item_cls_val = 'favorite-item-cls'; 
+								} 
+							}   
+							 
+							 if(item_video_url != ''){
+							 
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';  
+							 }else{
+							 
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
+							 
+							 }  
+						}	 
+					  
+					  	var ret_item_txt = (item_txt == '') ? '<div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div>' : item_txt;
+					 	 
+						$("#fetch_category_gallery_items_data").html( ret_item_txt ); 
+						
+						var page_counter = 1; 
+						if(item_txt != ''){
+							
+							$(window).scroll(function(){  
+								var position_val = $(window).scrollTop();
+								var bottom_val = $(document).height() - $(window).height(); 
+								var position_val2 = Math.ceil(position_val);   
 								
-								if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
-									/* leaave it */
-								}else{
-									$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+resp_data+")");
-								}  
-								//$('#fetch_home_contents').html(resp_data);    
-							}
-						});  
-					});
-					
-					$('.gallery-row').infiniteScroll({
-						path: getPenPath,
-						append: '.post',
-						scrollThreshold: 500,
-						status: '.page-load-status',
-					});
-					
-					$('.top-single .menu-tab').click(function(){
-						$('.menu-hide').toggleClass('show');
-						$('.menu-tab').toggleClass('active');
-					});
-					
-					$('.top-single a').click(function(){
-						$('.menu-hide').removeClass('show');
-						$('.menu-tab').removeClass('active');
-					});  
-		
+								if(( position_val == bottom_val || position_val2 == bottom_val) && page_counter < total_pages ){  
+									//var no_of_limits = (total_pages >1) ? 12 : total_gallery_items_nums; 
+									 
+									var item_txt2 = '';
+									var cntrs3;  
+									var cntrs4 = (page_counter*12); 
+									var no_of_limits3 = cntrs4 + 12; 
+									no_of_limits3 = (no_of_limits3 > MatchedItems.length ) ? MatchedItems.length : no_of_limits3;
+									
+									for (cntrs3=cntrs4; cntrs3 < no_of_limits3; cntrs3++) {
+									
+										var item_id = MatchedItems[cntrs3]["item_id"]; 
+										var item_name = MatchedItems[cntrs3]["item_name"]; 
+										var item_slug = MatchedItems[cntrs3]["item_slug"]; 
+										var item_summary = MatchedItems[cntrs3]["item_summary"]; 
+										var item_thumbnail = MatchedItems[cntrs3]["item_thumbnail"]; 
+										var item_type = MatchedItems[cntrs3]["item_type"];   
+										var item_video_url = ''; 
+										if(item_type == "video"){
+											item_video_url = MatchedItems[cntrs3]["item_video_url"]; 
+										}   	  
+											 
+										var fav_item_cls_val = fav_cls_val =  '';    
+										if(saved_items_arrs.length){
+											if(saved_items_arrs.indexOf(item_id) !== -1){ 
+												fav_cls_val = 'favorite-cls'; 
+												fav_item_cls_val = 'favorite-item-cls';  
+											} 
+										}   
+										 
+										 if(item_video_url != ''){
+										 
+											item_txt2 += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>'; 
+										
+										 }else{
+										 
+											item_txt2 += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
+										 
+										 }  
+									} 
+									
+									if(item_txt2 != ''){
+										$("#fetch_category_gallery_items_data").append( item_txt2 ); 
+										  
+									}
+									
+									page_counter = page_counter +1;
+								 
+									setTimeout(() => { 
+										var random_number3 = Math.floor(Math.random() * 100);
+										operate_favourites(random_number3); 
+									},500);
+								
+								} 
+								
+							}); 
+						}
+						
+					 
+						$('.loading').hide();
+						
+						if(page_counter == 1){
+							operate_favourites(random_number2); 
+						}
+						
+					} 
 				}
-			}
+				
+				rawFile.send(null);  
+			}   
+		});
+	}	
 		
-		rawFile.send(null);
-	});
-}	
-	
-	
-	function readXml(xmlFile){  
-		var xmlDoc; 
-		if(typeof window.DOMParser != "undefined") {
-			xmlhttp=new XMLHttpRequest();
-			xmlhttp.open("GET",xmlFile,false);
-			if (xmlhttp.overrideMimeType){
-				xmlhttp.overrideMimeType('text/xml');
-			}
-			xmlhttp.send();
-			xmlDoc=xmlhttp.responseXML;
-		}
-		else{
-			xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-			xmlDoc.async="false";
-			xmlDoc.load(xmlFile);
-		}
-		return xmlDoc; 
-	}
-	
-	function readTextFile(file, callback) {
-		var rawFile = new XMLHttpRequest();
-		rawFile.overrideMimeType("application/json");
-		rawFile.open("GET", file, true);
-		rawFile.onreadystatechange = function() {
-			if (rawFile.readyState === 4 && rawFile.status == "200") {
-				callback(rawFile.responseText);
-			}
-		}
-		rawFile.send(null);
-	}
-</script>
+	 
 
+function readXml(xmlFile){  
+	var xmlDoc; 
+	if(typeof window.DOMParser != "undefined") {
+		xmlhttp=new XMLHttpRequest();
+		xmlhttp.open("GET",xmlFile,false);
+		if (xmlhttp.overrideMimeType){
+			xmlhttp.overrideMimeType('text/xml');
+		}
+		xmlhttp.send();
+		xmlDoc=xmlhttp.responseXML;
+	}
+	else{
+		xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+		xmlDoc.async="false";
+		xmlDoc.load(xmlFile);
+	}
+	return xmlDoc; 
+}
+
+function readTextFile(file, callback) {
+	var rawFile = new XMLHttpRequest();
+	rawFile.overrideMimeType("application/json");
+	rawFile.open("GET", file, true);
+	rawFile.onreadystatechange = function() {
+		if (rawFile.readyState === 4 && rawFile.status == "200") {
+			callback(rawFile.responseText);
+		}
+	}
+	rawFile.send(null);
+}
+</script>
 <div class="loading" style="display: none;">
 	<div class="content"><img style="width: 100px;" src="./assets/images/loading.svg"/></div>
 </div>
-
-
-
-
 </body>
 </html>
