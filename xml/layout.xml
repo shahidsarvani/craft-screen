@@ -20,7 +20,7 @@
 	<category>
 		<category_id>2</category_id>
    		<category_name>Exhibition</category_name>
-		<category_slug>exhibition-name-2</category_slug>
+		<category_slug>exhibition</category_slug>
 		<category_summary>Exhibition summary 2</category_summary>
 		<category_thumbnail>assets/images/exi.svg</category_thumbnail>
     </category> 
@@ -48,7 +48,7 @@
 	<category>
 		<category_id>6</category_id>
    		<category_name>Museums</category_name>
-		<category_slug>museums-name-2</category_slug>
+		<category_slug>museums</category_slug>
 		<category_summary>Museums summary 2</category_summary>
 		<category_thumbnail>assets/images/museums.svg</category_thumbnail>
     </category> 

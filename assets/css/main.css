@@ -2,7 +2,7 @@ html {
     overflow-x: hidden;
 }
 body {
-    background-color: #242d30;
+    background-color: #25282A;
     overflow-x: hidden;
 }
 
@@ -60,13 +60,11 @@ body {
     text-decoration: none;
 }
 .fav-link:hover {
- color: #f37445;
+ color: #FF5C39;
 }
 
 
-.link-list li a:hover img{
-    filter: invert(57%) sepia(28%) saturate(2826%) hue-rotate(332deg) brightness(99%) contrast(92%);
-}
+
 .w-100 {
     width: 100%;
 }
@@ -86,7 +84,7 @@ body {
     border-radius: 10px;
 }
 .heart-icon i {
-    color: #acb0ad;
+    color: #00B5E2;
     position: absolute;
     bottom: 10px;
     right: 22px;
@@ -98,7 +96,7 @@ body {
 } 
 
 .favorite-cls .heart-icon i {
-    color: #f37445; 
+    color: #CE0058; 
     opacity: 1;
 }
 
@@ -184,10 +182,7 @@ body {
     text-align: center;
     transition: all 0.5s ease;
 }
-.menu-hide nav ul li a:hover img {
-    filter: invert(57%) sepia(28%) saturate(2826%) hue-rotate(332deg) brightness(99%) contrast(92%);
- 
-}
+
 .menu-hide nav ul li a {
     padding: 0px 25px;
     text-decoration: none;
@@ -248,6 +243,35 @@ body {
     align-items: flex-end;
     justify-content: center;
 
+}
+.digital-cls:hover img {
+    filter: invert(86%) sepia(23%) saturate(5947%) hue-rotate(343deg) brightness(105%) contrast(101%);
+}
+
+.exhibition-cls:hover img {
+    filter: invert(39%) sepia(98%) saturate(1238%) hue-rotate(338deg) brightness(103%) contrast(101%);
+}
+
+.galleries-cls:hover img {
+    filter: invert(12%) sepia(98%) saturate(5967%) hue-rotate(328deg) brightness(80%) contrast(103%);
+}
+.models-cls:hover img {
+    filter: invert(27%) sepia(18%) saturate(5870%) hue-rotate(338deg) brightness(106%) contrast(117%);
+}
+.design-cls:hover img {
+    filter: invert(20%) sepia(43%) saturate(5619%) hue-rotate(279deg) brightness(87%) contrast(92%);
+}
+.museums-cls:hover img {
+    filter: invert(15%) sepia(65%) saturate(3290%) hue-rotate(260deg) brightness(98%) contrast(98%);
+}
+.events-cls:hover img {
+    filter: invert(32%) sepia(48%) saturate(2038%) hue-rotate(179deg) brightness(100%) contrast(104%);
+}
+.interactive-cls:hover img {
+    filter: invert(65%) sepia(48%) saturate(6774%) hue-rotate(123deg) brightness(99%) contrast(101%);
+}
+.fabrication-cls:hover img {
+    filter: invert(55%) sepia(25%) saturate(7223%) hue-rotate(158deg) brightness(102%) contrast(101%);
 }
 
 
