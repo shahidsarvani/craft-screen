@@ -36,8 +36,8 @@
 
 <div id="fetch_section2_data" style="display:none">    
   <div class="container-custom">
-	<div class="top-single">
-	  <div class="d-flex">
+	<div class="top-single row">
+	  <div class="d-flex col-md-4">
 		<div class="menu-tab">
 		  <div id="one"></div>
 		  <div id="two"></div>
@@ -49,8 +49,14 @@
 		  </nav>
 		</div>
 	  </div>
-	  <a href="./index-dev.html"><img id="fetch_detail_cate_img" class="category-logo" src="assets/images/digital.svg" /></a> <!--(<span id="">0)</span> -->
-	  <a class="fav-link" href="javascript:void(0);" id="fetch_favorite_txt" data-favorite-type="0" data-favorite-total="0"><i class="fa fa-thumbs-up"></i> (0)</a> </div> <!-- onClick="operate_cateogory_fav_items();"-->
+	  <div class="col-md-4 text-center">
+	 	 <a href="./index-dev.html"><img id="fetch_detail_cate_img" class="category-logo" src="assets/images/digital.svg" /></a>
+	  </div>
+	   <div class="col-md-4 text-end">
+	  	<a class="fav-link" href="javascript:void(0);" id="fetch_favorite_txt" data-favorite-type="0" data-favorite-total="0"><i class="fa fa-thumbs-up"></i> <span class="numb-span">(0)</span></a>
+	  </div>
+	  
+	 </div> <!-- onClick="operate_cateogory_fav_items();"-->
 	<div class="w-100">
 	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
 		   
@@ -143,7 +149,7 @@
 				$("#fetch_category_gallery_items_data div.col-md-3").show(); 
 				
 				var fav_nums1 =$('#fetch_favorite_txt').attr("data-favorite-total");
-				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+fav_nums1+")"); 
+				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+fav_nums1+")</span>"); 
 			} 
 		}); 
 			
@@ -195,7 +201,7 @@
 					if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
 						/* skip it */
 					}else{
-						$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+resp_data+")");
+						$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+resp_data+")</span>");
 					} 
 				}
 			});   
@@ -284,7 +290,7 @@
 						}else{
 							 
 							$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
-							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+fav_nums+")");
+							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span'>("+fav_nums+")</span>");
 						}
 						
 						
