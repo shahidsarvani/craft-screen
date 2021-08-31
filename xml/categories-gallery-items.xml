@@ -73,15 +73,6 @@
 	<item_type>image</item_type>
 </category_item>
 <category_item parent_id="1">
-	<item_id>9</item_id>
-	<item_name>item name 9</item_name>
-	<item_slug>item-name-9</item_slug>
-	<item_summary>item summary 9</item_summary>
-	<item_thumbnail>assets/images/category/Sequence 03.00_39_41_16.Still048.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-
-<category_item parent_id="1">
 	<item_id>10</item_id>
 	<item_name>item name 10</item_name>
 	<item_slug>item-name-10</item_slug>
@@ -90,7 +81,6 @@
 	<item_type>video</item_type>
 	<item_video_url>assets/images/category/DGDA_WELCOME CENTER_FORMULA E.mp4</item_video_url>
 </category_item>  
-
 <category_item parent_id="1">
 	<item_id>11</item_id>
 	<item_name>item name 11</item_name>
@@ -244,5 +234,12 @@
 	<item_thumbnail>assets/images/category/Sequence 03.00_37_08_15.Still046.jpg</item_thumbnail>
 	<item_type>image</item_type>
 </category_item>
-
+<category_item parent_id="1">
+	<item_id>30</item_id>
+	<item_name>item name 30</item_name>
+	<item_slug>item-name-30</item_slug>
+	<item_summary>item summary 30</item_summary>
+	<item_thumbnail>assets/images/category/Sequence 03.00_39_41_16.Still048.jpg</item_thumbnail>
+	<item_type>image</item_type>
+</category_item>
 </category_items>
