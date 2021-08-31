@@ -245,36 +245,55 @@ body {
 
 }
 .digital-cls:hover img {
+    
     filter: invert(86%) sepia(23%) saturate(5947%) hue-rotate(343deg) brightness(105%) contrast(101%);
+    
 }
 
 .exhibition-cls:hover img {
+    
     filter: invert(39%) sepia(98%) saturate(1238%) hue-rotate(338deg) brightness(103%) contrast(101%);
+    
 }
 
 .galleries-cls:hover img {
+    
     filter: invert(12%) sepia(98%) saturate(5967%) hue-rotate(328deg) brightness(80%) contrast(103%);
+   
 }
 .models-cls:hover img {
+    
     filter: invert(27%) sepia(18%) saturate(5870%) hue-rotate(338deg) brightness(106%) contrast(117%);
+    
 }
 .design-cls:hover img {
+    
     filter: invert(20%) sepia(43%) saturate(5619%) hue-rotate(279deg) brightness(87%) contrast(92%);
+   
 }
 .museums-cls:hover img {
+    
     filter: invert(15%) sepia(65%) saturate(3290%) hue-rotate(260deg) brightness(98%) contrast(98%);
+   
 }
 .events-cls:hover img {
+    
     filter: invert(32%) sepia(48%) saturate(2038%) hue-rotate(179deg) brightness(100%) contrast(104%);
+    
 }
 .interactive-cls:hover img {
+    
     filter: invert(65%) sepia(48%) saturate(6774%) hue-rotate(123deg) brightness(99%) contrast(101%);
+   
 }
 .fabrication-cls:hover img {
-    filter: invert(55%) sepia(25%) saturate(7223%) hue-rotate(158deg) brightness(102%) contrast(101%);
+    
+    filter: invert(70%) sepia(73%) saturate(646%) hue-rotate(17deg) brightness(100%) contrast(101%);
 }
 
-
+.numb-span {
+    font-size: 26px;
+}
 /* loading css starts */
 .loading {
 	position: absolute;
