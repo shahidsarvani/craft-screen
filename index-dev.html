@@ -50,7 +50,7 @@
 		</div>
 	  </div>
 	  <a href="./index-dev.html"><img id="fetch_detail_cate_img" class="category-logo" src="assets/images/digital.svg" /></a> <!--(<span id="">0)</span> -->
-	  <a class="fav-link" href="javascript:void(0);" id="fetch_favorite_txt" data-favorite-type="0"><i class="fa fa-thumbs-up"></i> (0)</a> </div> <!-- onClick="operate_cateogory_fav_items();"-->
+	  <a class="fav-link" href="javascript:void(0);" id="fetch_favorite_txt" data-favorite-type="0" data-favorite-total="0"><i class="fa fa-thumbs-up"></i> (0)</a> </div> <!-- onClick="operate_cateogory_fav_items();"-->
 	<div class="w-100">
 	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
 		   
@@ -150,10 +150,13 @@
 				$(this).attr("data-favorite-type", "1");
 				//$all_items.not(".favorite-item-cls").hide();  
 				$('div.col-md-3:not(.favorite-item-cls)').hide();
-				
+				$('#fetch_favorite_txt').html('Clear <i class="fa fa-times"></i>');
 			}else{
 				$(this).attr("data-favorite-type", "0"); 
 				$("#fetch_category_gallery_items_data div.col-md-3").show(); 
+				
+				var fav_nums1 =$('#fetch_favorite_txt').attr("data-favorite-total");
+				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+fav_nums1+")"); 
 			} 
 		}); 
 			
@@ -199,6 +202,8 @@
 				success: function(resp_data){ 
 					$('.loading').hide();
 					resp_data = resp_data.trim();
+					
+					$('#fetch_favorite_txt').attr("data-favorite-total", resp_data);
 					
 					if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
 						/* skip it */
@@ -300,6 +305,8 @@
 						if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
 							/* skip it */
 						}else{
+							 
+							$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
 							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> ("+fav_nums+")");
 						}
 						
