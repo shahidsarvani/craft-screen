@@ -14,11 +14,10 @@
 	<script src="./assets/js/spotlight.bundle.js"></script>  
 	<script src="./assets/js/infinite-ajax-scroll.min.js"></script>
 </head>
-<body>  
-
+<body>
 <div id="fetch_section1_data">
 	<div class="logo" id="fetch_site_logo">
-	   <a href="index.html"><img src="./assets/images/logo.svg" /></a> 
+	   <a href="index.html"><img src="./assets/images/logo.svg" /></a>
 	</div> 
 	<div id="fetch_categories_data"> Loading... </div> 
 </div>
@@ -185,60 +184,7 @@
 		
 		});
 			
-	});   
-	
-	
-	function operate_favourites(rand_nums){ 
-		//jQuery(document).ready(function($){	
-		$("a.operate-fav-cls").unbind("click"); 
-		$("a.operate-fav-cls").click(function() { 
-		
-			var my_sel_category_id = $(this).attr("data-category-id");
-			var my_sel_item_id = $(this).attr("data-item-id"); 
-			 
-			var item_status = 0;
-			if($(this).hasClass("favorite-cls")){ 
-				item_status = 0;
-				$(this).removeClass('favorite-cls'); 
-				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls');  
-				 
-			}else{
-				item_status = 1;
-				$(this).addClass('favorite-cls');
-				$("#cate_gallery_item_"+my_sel_item_id).addClass('favorite-item-cls');  
-			}
-		 
-			var formData = new FormData();
-			formData.append("visitor_id", '1');  
-			formData.append("category_id", my_sel_category_id);  
-			formData.append("item_id", my_sel_item_id);
-			formData.append("item_status", item_status);  
-						   
-			$.ajax({
-				cache: false,
-				method: "POST",
-				url: "script.php",
-				contentType: false,
-				processData: false,
-				data: formData,
-				beforeSend: function(){
-					$('.loading').show();
-				},
-				success: function(resp_data){ 
-					$('.loading').hide();
-					resp_data = resp_data.trim();
-					
-					$('#fetch_favorite_txt').attr("data-favorite-total", resp_data);
-					
-					if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
-						/* skip it */
-					}else{
-						$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+resp_data+")</span>");
-					} 
-				}
-			});   
-		});  
-	}	
+	});  
 	
 	
 	function operate_cateogory_items(sel_cateid, sel_catename, sel_catethumbnail, show_fav){
@@ -386,17 +332,15 @@
 					 	 
 						$("#fetch_category_gallery_items_data").html( ret_item_txt ); 
 						
-						 let ias = new InfiniteAjaxScroll('#fetch_category_gallery_items_data', {
-							  item: '#fetch_category_gallery_items_data .img-single',
-							  next: '.next',
-							  pagination: '.pagination'
-						 });
+						if(ret_item_txt != ''){
+							 let ias = new InfiniteAjaxScroll('#fetch_category_gallery_items_data', {
+								  item: '#fetch_category_gallery_items_data .img-single',
+								  next: '.next',
+								  pagination: '.pagination'
+							 });
+						 }
 						 
-						$('.loading').hide();
-						
-						/*if(page_counter == 1){
-							operate_favourites(random_number2); 
-						}*/
+						$('.loading').hide(); 
 					} 
 				}
 				
