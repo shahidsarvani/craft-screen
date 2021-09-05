@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="./assets/css/main.css" />
 	<script src="./assets/js/jquery-3.6.0.min.js"></script> 
 	<script src="./assets/js/bootstrap.min.js"></script> 
-	<script src="./assets/js/lazyload.js"></script> 
 	<script src="./assets/js/spotlight.bundle.js"></script>  
 	<script src="./assets/js/infinite-ajax-scroll.min.js"></script>
 </head>
@@ -46,9 +45,14 @@
 	  
 	 </div>
 	<div class="w-100">
-	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
-		   
+	  <!--  d-flex -->
+	  <div class="row gallery-row justify-content-center spotlight-group" id="fetch_category_gallery_items_data">
+	  	  
 	  </div>
+	  <!--  d-flex -->
+	  <div class="row gallery-row justify-content-center spotlight-group d-none" id="fetch_fav_category_gallery_items_data">
+	  	  
+	  </div>  
 	  
 	  <div class="pagination">
 			<a href="index.html" class="next">Next</a>
@@ -124,19 +128,22 @@
 			var data_favorite_type = $(this).attr("data-favorite-type");
 			 
 			if(data_favorite_type == 0){
-				$(this).attr("data-favorite-type", "1");
-				//$all_items.not(".favorite-item-cls").hide();  
-				$('div.col-md-3:not(.favorite-item-cls)').hide();
+				$(this).attr("data-favorite-type", "1"); 
+				//$('div.col-md-3:not(.favorite-item-cls)').hide();
 				$('#fetch_favorite_txt').html('Clear <i class="fa fa-times"></i>');
 				
-				
+				$('#fetch_category_gallery_items_data').addClass('d-none');
+				$('#fetch_fav_category_gallery_items_data').removeClass('d-none');
+				 
 			}else{
 				$(this).attr("data-favorite-type", "0"); 
-				$("#fetch_category_gallery_items_data div.col-md-3").show(); 
+				//$("#fetch_category_gallery_items_data div.col-md-3").show(); 
 				
 				var fav_nums1 =$('#fetch_favorite_txt').attr("data-favorite-total");
 				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums1+")</span>"); 
-				
+			 
+				$('#fetch_category_gallery_items_data').removeClass('d-none');
+				$('#fetch_fav_category_gallery_items_data').addClass('d-none');
 				
 			} 
 		});  
@@ -150,18 +157,35 @@
 			if($(this).hasClass("favorite-cls")){ 
 				item_status = 0;
 				$(this).removeClass('favorite-cls'); 
-				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls'); 
 				
-				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls'); 
+				$("#fetch_item_anchor_id_"+my_sel_item_id).removeClass('favorite-cls'); 
 				
+				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls');  
 				
-				//<a class="spotlight"  cate_spotlight_
-				
-				 
+				$("#fav_cate_gallery_item_"+my_sel_item_id).remove(); 
+						  
 			}else{
 				item_status = 1;
 				$(this).addClass('favorite-cls');
 				$("#cate_gallery_item_"+my_sel_item_id).addClass('favorite-item-cls');  
+				
+				var my_item_data = $("#cate_gallery_item_"+my_sel_item_id).html();
+				
+				my_item_data = my_item_data.replace(/fetch_item_anchor_id_/g, 'fetch_fav_item_anchor_id_');
+				 
+				my_item_data = '<div class="col-md-3 img-single position-relative favorite-item-cls" id="fav_cate_gallery_item_'+my_sel_item_id+'">' + my_item_data + '</div>';
+				
+				
+				if($("#fetch_fav_category_gallery_items_data div.favorite-item-cls").length == 0){
+				
+					$("#fetch_fav_category_gallery_items_data").html( my_item_data ); 
+					
+				}else{ 
+				 
+					$("#fetch_fav_category_gallery_items_data").append( my_item_data );  
+				
+				}
+				
 			}
 		 
 			var formData = new FormData();
@@ -246,7 +270,8 @@
 				var total_gallery_items_nums = MatchedItems.length;   
 			
 				var contrs1;   
-				var item_txt ='';
+				var item_txt = '';
+				var fav_item_txt = '';
 				var saved_items_arrs = [];  
 				var random_number2 = Math.floor(Math.random() * 100);
 				
@@ -319,10 +344,7 @@
 							var fav_item_cls_val = fav_cls_val =  '';  
 							
 							//alert( saved_items_arrs.length );   
-							if(saved_items_arrs.length){
-							
-								//alert(item_id);
-								//alert("case-2 " + item_id );
+							if(saved_items_arrs.length){ 
 								
 								if(saved_items_arrs.indexOf(item_id) !== -1){
 									fav_item_cls_val = 'favorite-item-cls'; 
@@ -330,20 +352,34 @@
 								} 
 							}
 							 
-							 if(item_video_url != ''){ 
-							 
-								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a id="cate_spotlight_'+item_id+'" class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';  
+							 if(item_video_url != ''){
+								
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';
+								
+								if(saved_items_arrs.indexOf(item_id) !== -1){
+									fav_item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="fav_cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_fav_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';
+								}
+								   
 							 }else{
 							 
-								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a id="cate_spotlight_'+item_id+'" class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
-							 
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
+								
+								if(saved_items_arrs.indexOf(item_id) !== -1){
+									fav_item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="fav_cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_fav_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
+								}  
+								
 							 }  
 						}	 
 					  
 					  	var ret_item_txt = (item_txt == '') ? '<div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div>' : item_txt;
+						
+						var ret_fav_item_txt = (fav_item_txt == '') ? '<div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div>' : fav_item_txt;
 					 	 
 						$("#fetch_category_gallery_items_data").html( ret_item_txt );  
 						
+						
+						$("#fetch_fav_category_gallery_items_data").html( ret_fav_item_txt );  
+						 
 						
 						if(ret_item_txt != ''){
 							 let ias = new InfiniteAjaxScroll('#fetch_category_gallery_items_data', {
