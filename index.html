@@ -49,7 +49,6 @@
 	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
 		   
 	  </div>
-	  <div id="spinner1" class="spinner">Loading...</div>
 		<div class="pagination">
 			<a href="index.html" class="next">Next</a>
 		</div>
@@ -202,7 +201,7 @@
 		jQuery(document).ready(function($){	   
 			$("#fetch_section1_data").fadeOut("slow");
 			$("#fetch_section2_data").fadeIn("slow");  
-			//$('.loading').show();  
+			$('.loading').show();  
 			$("#fetch_detail_cate_img").attr('src', sel_catethumbnail);
 			$("#fetch_favorite_txt").attr("data-favorite-type", "0");
 			 
@@ -341,37 +340,9 @@
 					  
 					  	var ret_item_txt = (item_txt == '') ? '<div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div>' : item_txt;
 					 	 
-						$("#fetch_category_gallery_items_data").html( ret_item_txt ); 
-						
-						if(ret_item_txt != ''){
-							 let ias = new InfiniteAjaxScroll('#fetch_category_gallery_items_data', {
-								  item: '#fetch_category_gallery_items_data .img-single',
-								  next: '.next',
-								  pagination: '.pagination',
-								  spinner: {
-									// element to show as spinner
-									element: '.spinner',
-								
-									// delay in milliseconds
-									// this is the minimal time the loader should be displayed. If loading takes longer, the spinner
-									// will be shown for the duration of the loading. If the loading takes less then this duration,
-									// say 300ms, then the spinner is still shown for 600ms.
-									delay: 600,
-								
-									// this function is called when the button has to be shown
-									show: function(element) {
-									  element.style.opacity = '1'; // default behaviour
-									},
-								
-									// this function is called when the button has to be hidden
-									hide: function(element) {
-									  element.style.opacity = '0'; // default behaviour
-									}
-								  }    
-							 });
-						 }
+						$("#fetch_category_gallery_items_data").html( ret_item_txt );  
 						 
-						//$('.loading').hide(); 
+						$('.loading').hide(); 
 					} 
 				}
 				
