@@ -49,6 +49,10 @@
 	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
 		   
 	  </div>
+	  
+	  <div class="pagination">
+			<a href="index.html" class="next">Next</a>
+	  </div>
 		
 	</div>  
   </div> 
@@ -339,6 +343,15 @@
 					  	var ret_item_txt = (item_txt == '') ? '<div class="col-md-2 img-single position-relative"> <p class="text-white no-record-wrapper">No record found!</p> </div>' : item_txt;
 					 	 
 						$("#fetch_category_gallery_items_data").html( ret_item_txt );  
+						
+						
+						if(ret_item_txt != ''){
+							 let ias = new InfiniteAjaxScroll('#fetch_category_gallery_items_data', {
+								  item: '#fetch_category_gallery_items_data .img-single',
+								  next: '.next',
+								  pagination: '.pagination',   
+							 });
+						 } 
 						 
 						$('.loading').hide(); 
 					} 
