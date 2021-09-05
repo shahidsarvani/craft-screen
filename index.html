@@ -12,7 +12,7 @@
 	<script src="./assets/js/bootstrap.min.js"></script> 
 	<script src="./assets/js/lazyload.js"></script> 
 	<script src="./assets/js/spotlight.bundle.js"></script>  
-	<script src="https://unpkg.com/@webcreate/infinite-ajax-scroll/dist/infinite-ajax-scroll.min.js"></script>
+	<script src="./assets/js/infinite-ajax-scroll.min.js"></script>
 </head>
 <body>  
 
@@ -264,6 +264,7 @@
 					if(item_parent_id == sel_cateid){ 
 						
 						var tempItems = new Array();
+						tempItems["parent_id"] = item_parent_id;
 						tempItems["item_id"] = CategoryItemObj[cntrs0].getElementsByTagName("item_id")[0].childNodes[0].nodeValue;
 						tempItems["item_name"] = CategoryItemObj[cntrs0].getElementsByTagName("item_name")[0].childNodes[0].nodeValue;
 						tempItems["item_slug"] = CategoryItemObj[cntrs0].getElementsByTagName("item_slug")[0].childNodes[0].nodeValue;
@@ -286,8 +287,7 @@
 				  
 				var total_gallery_items_nums = MatchedItems.length;   
 			
-				var contrs1;  
-				var cntrs; 
+				var contrs1;   
 				var item_txt ='';
 				var saved_items_arrs = [];  
 				var random_number2 = Math.floor(Math.random() * 100);
@@ -304,11 +304,32 @@
 							var sel_rows = JSON.parse(resp_txts);    
 							for (contrs1 = 0; contrs1 < sel_rows.length; contrs1++) {
 								var db_item_id = sel_rows[contrs1]["item_id"];
-								saved_items_arrs.push( db_item_id );  
-								if(sel_rows[contrs1]["category_id"] == sel_cateid){
+								
+								 //alert(sel_rows[contrs1]["category_id"] + " ===== " + sel_cateid);
+								 
+								if(sel_rows[contrs1]["category_id"] == sel_cateid){ //alert("case-1 " + db_item_id );
+									saved_items_arrs.push( db_item_id ); 
 									fav_nums = fav_nums + 1;  
 								}  
 							}
+							
+							if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
+								/* skip it */
+							}else{
+								 
+								$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
+								$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums+")</span>");
+							} 
+							
+						}else{
+						
+							if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
+								/* skip it */
+							}else{
+								 
+								$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
+								$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums+")</span>");
+							}  
 						}
 						
 						
@@ -321,17 +342,11 @@
 									fav_nums = fav_nums + 1; 
 								} 
 							} 
-						}*/
-						
-						if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
-							/* skip it */
-						}else{
-							 
-							$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
-							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums+")</span>");
-						} 
-						
-						for (cntrs=0; cntrs < total_gallery_items_nums; cntrs++) {
+						}*/ 
+						 
+						var cntrs; 
+						for (cntrs=0; cntrs < total_gallery_items_nums; cntrs++) { 
+							var parent_id_rc = MatchedItems[cntrs]["parent_id"]; 
 							var item_id = MatchedItems[cntrs]["item_id"]; 
 							var item_name = MatchedItems[cntrs]["item_name"]; 
 							var item_slug = MatchedItems[cntrs]["item_slug"]; 
@@ -343,20 +358,26 @@
 								item_video_url = MatchedItems[cntrs]["item_video_url"]; 
 							}   	  
 								 
-							var fav_item_cls_val = fav_cls_val =  '';    
+							var fav_item_cls_val = fav_cls_val =  '';  
+							
+							//alert( saved_items_arrs.length );   
 							if(saved_items_arrs.length){
-								if(saved_items_arrs.indexOf(item_id) !== -1){ 
-									fav_cls_val = 'favorite-cls'; 
+							
+								//alert(item_id);
+								//alert("case-2 " + item_id );
+								
+								if(saved_items_arrs.indexOf(item_id) !== -1){
 									fav_item_cls_val = 'favorite-item-cls'; 
+									fav_cls_val = 'favorite-cls';
 								} 
 							}
 							 
 							 if(item_video_url != ''){
 							 
-								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';  
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';  
 							 }else{
 							 
-								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
 							 
 							 }  
 						}	 
