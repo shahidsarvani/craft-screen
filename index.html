@@ -49,8 +49,9 @@
 	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
 		   
 	  </div>
+	  <div id="spinner1" class="spinner">Loading...</div>
 		<div class="pagination">
-			<a href="page2.html" class="next">Next</a>
+			<a href="index.html" class="next">Next</a>
 		</div>
 	</div>  
   </div> 
@@ -126,12 +127,16 @@
 				//$all_items.not(".favorite-item-cls").hide();  
 				$('div.col-md-3:not(.favorite-item-cls)').hide();
 				$('#fetch_favorite_txt').html('Clear <i class="fa fa-times"></i>');
+				
+				
 			}else{
 				$(this).attr("data-favorite-type", "0"); 
 				$("#fetch_category_gallery_items_data div.col-md-3").show(); 
 				
 				var fav_nums1 =$('#fetch_favorite_txt').attr("data-favorite-total");
 				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums1+")</span>"); 
+				
+				
 			} 
 		});  
 		
@@ -144,7 +149,13 @@
 			if($(this).hasClass("favorite-cls")){ 
 				item_status = 0;
 				$(this).removeClass('favorite-cls'); 
-				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls');  
+				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls'); 
+				
+				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls'); 
+				
+				
+				//<a class="spotlight"  cate_spotlight_
+				
 				 
 			}else{
 				item_status = 1;
@@ -191,7 +202,7 @@
 		jQuery(document).ready(function($){	   
 			$("#fetch_section1_data").fadeOut("slow");
 			$("#fetch_section2_data").fadeIn("slow");  
-			$('.loading').show();  
+			//$('.loading').show();  
 			$("#fetch_detail_cate_img").attr('src', sel_catethumbnail);
 			$("#fetch_favorite_txt").attr("data-favorite-type", "0");
 			 
@@ -318,12 +329,12 @@
 								} 
 							}
 							 
-							 if(item_video_url != ''){
+							 if(item_video_url != ''){ 
 							 
-								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';  
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a id="cate_spotlight_'+item_id+'" class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>';  
 							 }else{
 							 
-								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
+								item_txt += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a id="cate_spotlight_'+item_id+'" class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+parent_id_rc+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
 							 
 							 }  
 						}	 
@@ -336,11 +347,31 @@
 							 let ias = new InfiniteAjaxScroll('#fetch_category_gallery_items_data', {
 								  item: '#fetch_category_gallery_items_data .img-single',
 								  next: '.next',
-								  pagination: '.pagination'
+								  pagination: '.pagination',
+								  spinner: {
+									// element to show as spinner
+									element: '.spinner',
+								
+									// delay in milliseconds
+									// this is the minimal time the loader should be displayed. If loading takes longer, the spinner
+									// will be shown for the duration of the loading. If the loading takes less then this duration,
+									// say 300ms, then the spinner is still shown for 600ms.
+									delay: 600,
+								
+									// this function is called when the button has to be shown
+									show: function(element) {
+									  element.style.opacity = '1'; // default behaviour
+									},
+								
+									// this function is called when the button has to be hidden
+									hide: function(element) {
+									  element.style.opacity = '0'; // default behaviour
+									}
+								  }    
 							 });
 						 }
 						 
-						$('.loading').hide(); 
+						//$('.loading').hide(); 
 					} 
 				}
 				
