@@ -12,6 +12,7 @@
 	<script src="./assets/js/bootstrap.min.js"></script> 
 	<script src="./assets/js/lazyload.js"></script> 
 	<script src="./assets/js/spotlight.bundle.js"></script>  
+	<script src="https://unpkg.com/@webcreate/infinite-ajax-scroll/dist/infinite-ajax-scroll.min.js"></script>
 </head>
 <body>  
 
@@ -49,8 +50,11 @@
 	  <div class="row gallery-row d-flex justify-content-center" id="fetch_category_gallery_items_data">
 		   
 	  </div>
+		<div class="pagination">
+			<a href="page2.html" class="next">Next</a>
+		</div>
 	</div>  
-  </div>
+  </div> 
 	 
 </div>
 <script>     
@@ -130,7 +134,56 @@
 				var fav_nums1 =$('#fetch_favorite_txt').attr("data-favorite-total");
 				$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums1+")</span>"); 
 			} 
-		}); 
+		});  
+		
+		$(document).on("click","a.operate-fav-cls",function() {
+			   
+			var my_sel_category_id = $(this).attr("data-category-id");
+			var my_sel_item_id = $(this).attr("data-item-id"); 
+			 
+			var item_status = 0;
+			if($(this).hasClass("favorite-cls")){ 
+				item_status = 0;
+				$(this).removeClass('favorite-cls'); 
+				$("#cate_gallery_item_"+my_sel_item_id).removeClass('favorite-item-cls');  
+				 
+			}else{
+				item_status = 1;
+				$(this).addClass('favorite-cls');
+				$("#cate_gallery_item_"+my_sel_item_id).addClass('favorite-item-cls');  
+			}
+		 
+			var formData = new FormData();
+			formData.append("visitor_id", '1');  
+			formData.append("category_id", my_sel_category_id);  
+			formData.append("item_id", my_sel_item_id);
+			formData.append("item_status", item_status);  
+						   
+			$.ajax({
+				cache: false,
+				method: "POST",
+				url: "script.php",
+				contentType: false,
+				processData: false,
+				data: formData,
+				beforeSend: function(){
+					$('.loading').show();
+				},
+				success: function(resp_data){ 
+					$('.loading').hide();
+					resp_data = resp_data.trim();
+					
+					$('#fetch_favorite_txt').attr("data-favorite-total", resp_data);
+					
+					if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
+						/* skip it */
+					}else{
+						$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+resp_data+")</span>");
+					} 
+				}
+			});   
+		
+		});
 			
 	});   
 	
@@ -247,13 +300,19 @@
 					 
 						var resp_txts = rawFile.responseText;
 						
-						var sel_rows = JSON.parse(resp_txts);    
-						for (contrs1 = 0; contrs1 < sel_rows.length; contrs1++) {
-							var db_item_id = sel_rows[contrs1]["item_id"];
-							saved_items_arrs.push( db_item_id );  
+						if(resp_txts != '' ){
+							var sel_rows = JSON.parse(resp_txts);    
+							for (contrs1 = 0; contrs1 < sel_rows.length; contrs1++) {
+								var db_item_id = sel_rows[contrs1]["item_id"];
+								saved_items_arrs.push( db_item_id );  
+								if(sel_rows[contrs1]["category_id"] == sel_cateid){
+									fav_nums = fav_nums + 1;  
+								}  
+							}
 						}
 						
-						var cntrsf; 
+						
+						/*var cntrsf; 
 						for (cntrsf=0; cntrsf < total_gallery_items_nums; cntrsf++) {
 							var item_idfv = MatchedItems[cntrsf]["item_id"];
 							
@@ -262,7 +321,7 @@
 									fav_nums = fav_nums + 1; 
 								} 
 							} 
-						}
+						}*/
 						
 						if($('#fetch_favorite_txt').html() == 'Clear <i class="fa fa-times"></i>'){
 							/* skip it */
@@ -270,14 +329,9 @@
 							 
 							$('#fetch_favorite_txt').attr("data-favorite-total", fav_nums);
 							$('#fetch_favorite_txt').html("<i class='fa fa-thumbs-up'></i> <span class='numb-span ms-1'>("+fav_nums+")</span>");
-						}
+						} 
 						
-						
-						var total_pages = (total_gallery_items_nums/12);
-						total_pages = Math.ceil(total_pages);   
-						var no_of_limits = (total_pages >1) ? 12 : total_gallery_items_nums; 
-						
-						for (cntrs=0; cntrs < no_of_limits; cntrs++) {
+						for (cntrs=0; cntrs < total_gallery_items_nums; cntrs++) {
 							var item_id = MatchedItems[cntrs]["item_id"]; 
 							var item_name = MatchedItems[cntrs]["item_name"]; 
 							var item_slug = MatchedItems[cntrs]["item_slug"]; 
@@ -295,7 +349,7 @@
 									fav_cls_val = 'favorite-cls'; 
 									fav_item_cls_val = 'favorite-item-cls'; 
 								} 
-							}   
+							}
 							 
 							 if(item_video_url != ''){
 							 
@@ -311,79 +365,17 @@
 					 	 
 						$("#fetch_category_gallery_items_data").html( ret_item_txt ); 
 						
-						var page_counter = 1; 
-						if(item_txt != ''){
-							
-							$(window).scroll(function(){  
-								var position_val = $(window).scrollTop();
-								var bottom_val = $(document).height() - $(window).height(); 
-								var position_val2 = Math.ceil(position_val);   
-								
-								if(( position_val == bottom_val || position_val2 == bottom_val) && page_counter < total_pages ){  
-									//var no_of_limits = (total_pages >1) ? 12 : total_gallery_items_nums; 
-									 
-									var item_txt2 = '';
-									var cntrs3;  
-									var cntrs4 = (page_counter*12); 
-									var no_of_limits3 = cntrs4 + 12; 
-									no_of_limits3 = (no_of_limits3 > MatchedItems.length ) ? MatchedItems.length : no_of_limits3;
-									
-									for (cntrs3=cntrs4; cntrs3 < no_of_limits3; cntrs3++) {
-									
-										var item_id = MatchedItems[cntrs3]["item_id"]; 
-										var item_name = MatchedItems[cntrs3]["item_name"]; 
-										var item_slug = MatchedItems[cntrs3]["item_slug"]; 
-										var item_summary = MatchedItems[cntrs3]["item_summary"]; 
-										var item_thumbnail = MatchedItems[cntrs3]["item_thumbnail"]; 
-										var item_type = MatchedItems[cntrs3]["item_type"];   
-										var item_video_url = ''; 
-										if(item_type == "video"){
-											item_video_url = MatchedItems[cntrs3]["item_video_url"]; 
-										}   	  
-											 
-										var fav_item_cls_val = fav_cls_val =  '';    
-										if(saved_items_arrs.length){
-											if(saved_items_arrs.indexOf(item_id) !== -1){ 
-												fav_cls_val = 'favorite-cls'; 
-												fav_item_cls_val = 'favorite-item-cls';  
-											} 
-										}   
-										 
-										 if(item_video_url != ''){
-										 
-											item_txt2 += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"><a class="spotlight" data-media="video" data-src-mp4="'+item_video_url+'" data-autoplay="false" data-poster="'+item_thumbnail+'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" class="lazyload" />  <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa  fa-thumbs-up"></i></span></a> </div>'; 
-										
-										 }else{
-										 
-											item_txt2 += '<div class="col-md-3 img-single position-relative '+fav_item_cls_val+'" id="cate_gallery_item_'+item_id+'"> <a class="spotlight" href="'+item_thumbnail+'" data-description="'+item_name+'"> <img src="'+item_thumbnail+'" alt="'+item_name+'" class="lazyload" /> </a> <a href="javascript:void(0);" class="operate-fav-cls '+fav_cls_val+'" data-category-id="'+item_parent_id+'" data-item-id="'+item_id+'" id="fetch_item_anchor_id_'+item_id+'"><span class="heart-icon"><i class="fa fa-thumbs-up"></i></span></a> </div>'; 
-										 
-										 }  
-									} 
-									
-									if(item_txt2 != ''){
-										$("#fetch_category_gallery_items_data").append( item_txt2 ); 
-										  
-									}
-									
-									page_counter = page_counter +1;
-								 
-									setTimeout(() => { 
-										var random_number3 = Math.floor(Math.random() * 100);
-										operate_favourites(random_number3); 
-									},500);
-								
-								} 
-								
-							}); 
-						}
-						
-					 
+						 let ias = new InfiniteAjaxScroll('#fetch_category_gallery_items_data', {
+							  item: '#fetch_category_gallery_items_data .img-single',
+							  next: '.next',
+							  pagination: '.pagination'
+						 });
+						 
 						$('.loading').hide();
 						
-						if(page_counter == 1){
+						/*if(page_counter == 1){
 							operate_favourites(random_number2); 
-						}
-						
+						}*/
 					} 
 				}
 				
