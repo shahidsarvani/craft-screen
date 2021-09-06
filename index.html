@@ -601,9 +601,15 @@
 						}
 					  );
 					}
-	
-					$(".loading").hide();
-					$("#fetch_section2_data").fadeIn("slow");
+					
+					
+					  $( "#fetch_section2_data" ).fadeIn( "slow", function() {
+						 $(".loading").hide();
+					  });
+				  
+				  
+					/*$(".loading").hide();
+					$("#fetch_section2_data").fadeIn("slow");*/
 					
 				  }
 				};
