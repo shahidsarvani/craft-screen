@@ -547,460 +547,133 @@
 	<item_thumbnail>assets/images/craft-images-dummy/29.jpeg</item_thumbnail>
 	<item_type>image</item_type>
 </category_item>
-<category_item parent_id="6">
-	<item_id>70</item_id>
-	<item_name>item name 70</item_name>
-	<item_slug>item-name-70</item_slug>
-	<item_summary>item summary 70</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 0 _IMG_9328.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>71</item_id>
-	<item_name>item name 71</item_name>
-	<item_slug>item-name-71</item_slug>
-	<item_summary>item summary 71</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 4 _2T7A7729.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>72</item_id>
-	<item_name>item name 72</item_name>
-	<item_slug>item-name-72</item_slug>
-	<item_summary>item summary 72</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 9 _2T7A8543.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>73</item_id>
-	<item_name>item name 73</item_name>
-	<item_slug>item-name-73</item_slug>
-	<item_summary>item summary 73</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9113.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>70</item_id><item_name>item name 70</item_name><item_slug>item-name-70</item_slug><item_summary>item summary 70</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 0 _IMG_9328.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>74</item_id>
-	<item_name>item name 74</item_name>
-	<item_slug>item-name-74</item_slug>
-	<item_summary>item summary 74</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9257.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>71</item_id><item_name>item name 71</item_name><item_slug>item-name-71</item_slug><item_summary>item summary 71</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 4 _2T7A7729.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>75</item_id>
-	<item_name>item name 75</item_name>
-	<item_slug>item-name-75</item_slug>
-	<item_summary>item summary 75</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9307.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>76</item_id>
-	<item_name>item name 76</item_name>
-	<item_slug>item-name-76</item_slug>
-	<item_summary>item summary 76</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9397 - DIGITAL.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>77</item_id>
-	<item_name>item name 77</item_name>
-	<item_slug>item-name-77</item_slug>
-	<item_summary>item summary 77</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9433.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>78</item_id>
-	<item_name>item name 78</item_name>
-	<item_slug>item-name-78</item_slug>
-	<item_summary>item summary 78</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1  ANIL4907.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>79</item_id>
-	<item_name>item name 79</item_name>
-	<item_slug>item-name-79</item_slug>
-	<item_summary>item summary 79</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_14.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>80</item_id>
-	<item_name>item name 80</item_name>
-	<item_slug>item-name-80</item_slug>
-	<item_summary>item summary 80</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ANIL4905.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>81</item_id>
-	<item_name>item name 81</item_name>
-	<item_slug>item-name-81</item_slug>
-	<item_summary>item summary 81</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ANIL4910.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>82</item_id>
-	<item_name>item name 82</item_name>
-	<item_slug>item-name-82</item_slug>
-	<item_summary>item summary 82</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ANIL4911.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>83</item_id>
-	<item_name>item name 83</item_name>
-	<item_slug>item-name-83</item_slug>
-	<item_summary>item summary 83</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ARTK5111.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>72</item_id><item_name>item name 72</item_name><item_slug>item-name-72</item_slug><item_summary>item summary 72</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 9 _2T7A8543.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>84</item_id>
-	<item_name>item name 84</item_name>
-	<item_slug>item-name-84</item_slug>
-	<item_summary>item summary 84</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ANIL4750.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>85</item_id>
-	<item_name>item name 85</item_name>
-	<item_slug>item-name-85</item_slug>
-	<item_summary>item summary 85</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ARTK4944.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>86</item_id>
-	<item_name>item name 86</item_name>
-	<item_slug>item-name-86</item_slug>
-	<item_summary>item summary 86</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ARTK4954.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>87</item_id>
-	<item_name>item name 87</item_name>
-	<item_slug>item-name-87</item_slug>
-	<item_summary>item summary 87</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ARTK4983.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>88</item_id>
-	<item_name>item name 88</item_name>
-	<item_slug>item-name-88</item_slug>
-	<item_summary>item summary 88</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z4  ANIL4869.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>73</item_id><item_name>item name 73</item_name><item_slug>item-name-73</item_slug><item_summary>item summary 73</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9113.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>89</item_id>
-	<item_name>item name 89</item_name>
-	<item_slug>item-name-89</item_slug>
-	<item_summary>item summary 89</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z4  ANIL4871.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>74</item_id><item_name>item name 74</item_name><item_slug>item-name-74</item_slug><item_summary>item summary 74</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9257.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>90</item_id>
-	<item_name>item name 90</item_name>
-	<item_slug>item-name-90</item_slug>
-	<item_summary>item summary 90</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z5  ANIL4875.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>91</item_id>
-	<item_name>item name 91</item_name>
-	<item_slug>item-name-91</item_slug>
-	<item_summary>item summary 91</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z6 ANIL4756.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>92</item_id>
-	<item_name>item name 92</item_name>
-	<item_slug>item-name-92</item_slug>
-	<item_summary>item summary 92</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z6 ANIL4766.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>75</item_id><item_name>item name 75</item_name><item_slug>item-name-75</item_slug><item_summary>item summary 75</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9307.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>93</item_id>
-	<item_name>item name 93</item_name>
-	<item_slug>item-name-93</item_slug>
-	<item_summary>item summary 93</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z6 ANIL4768.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>76</item_id><item_name>item name 76</item_name><item_slug>item-name-76</item_slug><item_summary>item summary 76</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9397 - DIGITAL.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>94</item_id>
-	<item_name>item name 94</item_name>
-	<item_slug>item-name-94</item_slug>
-	<item_summary>item summary 94</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z7 ARTK4995.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>77</item_id><item_name>item name 77</item_name><item_slug>item-name-77</item_slug><item_summary>item summary 77</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-12 KFE Jeddah _C0A9433.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>95</item_id>
-	<item_name>item name 95</item_name>
-	<item_slug>item-name-95</item_slug>
-	<item_summary>item summary 95</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z7 ARTK5106.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>78</item_id><item_name>item name 78</item_name><item_slug>item-name-78</item_slug><item_summary>item summary 78</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1  ANIL4907.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>96</item_id>
-	<item_name>item name 96</item_name>
-	<item_slug>item-name-96</item_slug>
-	<item_summary>item summary 96</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z8  ARTK5108.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>97</item_id>
-	<item_name>item name 97</item_name>
-	<item_slug>item-name-97</item_slug>
-	<item_summary>item summary 97</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z8 ARTK5001.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>98</item_id>
-	<item_name>item name 98</item_name>
-	<item_slug>item-name-98</item_slug>
-	<item_summary>item summary 98</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ANIL4884.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>99</item_id>
-	<item_name>item name 99</item_name>
-	<item_slug>item-name-99</item_slug>
-	<item_summary>item summary 99</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ARTK5005.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>100</item_id>
-	<item_name>item name 100</item_name>
-	<item_slug>item-name-100</item_slug>
-	<item_summary>item summary 100</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ARTK5080.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>79</item_id><item_name>item name 79</item_name><item_slug>item-name-79</item_slug><item_summary>item summary 79</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ANIL4905.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>101</item_id>
-	<item_name>item name 101</item_name>
-	<item_slug>item-name-101</item_slug>
-	<item_summary>item summary 101</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ARTK5091.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>80</item_id><item_name>item name 80</item_name><item_slug>item-name-80</item_slug><item_summary>item summary 80</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ANIL4910.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>102</item_id>
-	<item_name>item name 102</item_name>
-	<item_slug>item-name-102</item_slug>
-	<item_summary>item summary 102</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z11 ANIL4896.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>81</item_id><item_name>item name 81</item_name><item_slug>item-name-81</item_slug><item_summary>item summary 81</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ANIL4911.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>103</item_id>
-	<item_name>item name 103</item_name>
-	<item_slug>item-name-103</item_slug>
-	<item_summary>item summary 103</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ANIL4898.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>82</item_id><item_name>item name 82</item_name><item_slug>item-name-82</item_slug><item_summary>item summary 82</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z1 ARTK5111.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>104</item_id>
-	<item_name>item name 104</item_name>
-	<item_slug>item-name-104</item_slug>
-	<item_summary>item summary 104</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ANIL4903.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>83</item_id><item_name>item name 83</item_name><item_slug>item-name-83</item_slug><item_summary>item summary 83</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z2 ANIL4743.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>105</item_id>
-	<item_name>item name 105</item_name>
-	<item_slug>item-name-105</item_slug>
-	<item_summary>item summary 105</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5030.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>106</item_id>
-	<item_name>item name 106</item_name>
-	<item_slug>item-name-106</item_slug>
-	<item_summary>item summary 106</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5033.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>107</item_id>
-	<item_name>item name 107</item_name>
-	<item_slug>item-name-107</item_slug>
-	<item_summary>item summary 107</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5095.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>84</item_id><item_name>item name 84</item_name><item_slug>item-name-84</item_slug><item_summary>item summary 84</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ANIL4750.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>108</item_id>
-	<item_name>item name 108</item_name>
-	<item_slug>item-name-108</item_slug>
-	<item_summary>item summary 108</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5100.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>109</item_id>
-	<item_name>item name 109</item_name>
-	<item_slug>item-name-109</item_slug>
-	<item_summary>item summary 109</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_11.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>110</item_id>
-	<item_name>item name 110</item_name>
-	<item_slug>item-name-110</item_slug>
-	<item_summary>item summary 110</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_12.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>111</item_id>
-	<item_name>item name 111</item_name>
-	<item_slug>item-name-111</item_slug>
-	<item_summary>item summary 111</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_13.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>112</item_id>
-	<item_name>item name 112</item_name>
-	<item_slug>item-name-112</item_slug>
-	<item_summary>item summary 112</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_14.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>113</item_id>
-	<item_name>item name 113</item_name>
-	<item_slug>item-name-113</item_slug>
-	<item_summary>item summary 113</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_15.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>85</item_id><item_name>item name 85</item_name><item_slug>item-name-85</item_slug><item_summary>item summary 85</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ARTK4944.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>114</item_id>
-	<item_name>item name 114</item_name>
-	<item_slug>item-name-114</item_slug>
-	<item_summary>item summary 114</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_16.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>86</item_id><item_name>item name 86</item_name><item_slug>item-name-86</item_slug><item_summary>item summary 86</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ARTK4954.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
+<category_item parent_id="6"><item_id>87</item_id><item_name>item name 87</item_name><item_slug>item-name-87</item_slug><item_summary>item summary 87</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z3 ARTK4983.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>115</item_id>
-	<item_name>item name 115</item_name>
-	<item_slug>item-name-115</item_slug>
-	<item_summary>item summary 115</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_17.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>88</item_id><item_name>item name 88</item_name><item_slug>item-name-88</item_slug><item_summary>item summary 88</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z4  ANIL4869.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>116</item_id>
-	<item_name>item name 116</item_name>
-	<item_slug>item-name-116</item_slug>
-	<item_summary>item summary 116</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_18.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>89</item_id><item_name>item name 89</item_name><item_slug>item-name-89</item_slug><item_summary>item summary 89</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z4  ANIL4871.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>117</item_id>
-	<item_name>item name 117</item_name>
-	<item_slug>item-name-117</item_slug>
-	<item_summary>item summary 117</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-12 Ithra BeingSaudi_0.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
-<category_item parent_id="6">
-	<item_id>118</item_id>
-	<item_name>item name 118</item_name>
-	<item_slug>item-name-118</item_slug>
-	<item_summary>item summary 118</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/2019-12 Ithra BeingSaudi_2.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>90</item_id><item_name>item name 90</item_name><item_slug>item-name-90</item_slug><item_summary>item summary 90</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z5  ANIL4875.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>119</item_id>
-	<item_name>item name 119</item_name>
-	<item_slug>item-name-119</item_slug>
-	<item_summary>item summary 119</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/Layer 2.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6"><item_id>91</item_id><item_name>item name 91</item_name><item_slug>item-name-91</item_slug><item_summary>item summary 91</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z6 ANIL4756.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>120</item_id>
-	<item_name>item name 120</item_name>
-	<item_slug>item-name-120</item_slug>
-	<item_summary>item summary 120</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/Layer 3.jpg</item_thumbnail>
-	<item_type>image</item_type>
-</category_item>
+<category_item parent_id="6">parent_id="6"><item_id>92</item_id><item_name>item name 92</item_name><item_slug>item-name-92</item_slug><item_summary>item summary 92</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z6 ANIL4766.jpg</item_thumbnail><item_type>image</item_type></category_item>
 
-<category_item parent_id="6">
-	<item_id>121</item_id>
-	<item_name>item name 121</item_name>
-	<item_slug>item-name-121</item_slug>
-	<item_summary>item summary 121</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/layer-img-video.png</item_thumbnail>
-	<item_type>video</item_type>
-	<item_video_url>assets/images/MUSEUMS/KACND_Site_Progress-June_2018_1.mp4</item_video_url>
-</category_item> 
+<category_item parent_id="6"><item_id>93</item_id><item_name>item name 93</item_name><item_slug>item-name-93</item_slug><item_summary>item summary 93</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z6 ANIL4768.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>94</item_id><item_name>item name 94</item_name><item_slug>item-name-94</item_slug><item_summary>item summary 94</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z7 ARTK4995.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>95</item_id><item_name>item name 95</item_name><item_slug>item-name-95</item_slug><item_summary>item summary 95</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z7 ARTK5106.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>96</item_id><item_name>item name 96</item_name><item_slug>item-name-96</item_slug><item_summary>item summary 96</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z8  ARTK5108.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>97</item_id><item_name>item name 97</item_name><item_slug>item-name-97</item_slug><item_summary>item summary 97</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z8 ARTK5001.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>98</item_id><item_name>item name 98</item_name><item_slug>item-name-98</item_slug><item_summary>item summary 98</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ANIL4884.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>99</item_id><item_name>item name 99</item_name><item_slug>item-name-99</item_slug><item_summary>item summary 99</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ARTK5005.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>100</item_id><item_name>item name 100</item_name><item_slug>item-name-100</item_slug><item_summary>item summary 100</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ARTK5080.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>101</item_id><item_name>item name 101</item_name><item_slug>item-name-101</item_slug><item_summary>item summary 101</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z9 ARTK5091.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>102</item_id><item_name>item name 102</item_name><item_slug>item-name-102</item_slug><item_summary>item summary 102</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z11 ANIL4896.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>103</item_id><item_name>item name 103</item_name><item_slug>item-name-103</item_slug><item_summary>item summary 103</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ANIL4898.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>104</item_id><item_name>item name 104</item_name><item_slug>item-name-104</item_slug><item_summary>item summary 104</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ANIL4903.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>105</item_id><item_name>item name 105</item_name><item_slug>item-name-105</item_slug><item_summary>item summary 105</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5030.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>106</item_id><item_name>item name 106</item_name><item_slug>item-name-106</item_slug><item_summary>item summary 106</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5033.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>107</item_id><item_name>item name 107</item_name><item_slug>item-name-107</item_slug><item_summary>item summary 107</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5095.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>108</item_id><item_name>item name 108</item_name><item_slug>item-name-108</item_slug><item_summary>item summary 108</item_summary><item_thumbnail>assets/images/MUSEUMS/2018-11 KACND _Z12 ARTK5100.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>109</item_id><item_name>item name 109</item_name><item_slug>item-name-109</item_slug><item_summary>item summary 109</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_11.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>110</item_id><item_name>item name 110</item_name><item_slug>item-name-110</item_slug><item_summary>item summary 110</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_12.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>111</item_id><item_name>item name 111</item_name><item_slug>item-name-111</item_slug><item_summary>item summary 111</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_13.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>112</item_id><item_name>item name 112</item_name><item_slug>item-name-112</item_slug><item_summary>item summary 112</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_14.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>113</item_id><item_name>item name 113</item_name><item_slug>item-name-113</item_slug><item_summary>item summary 113</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_15.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>114</item_id><item_name>item name 114</item_name><item_slug>item-name-114</item_slug><item_summary>item summary 114</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_16.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>115</item_id><item_name>item name 115</item_name><item_slug>item-name-115</item_slug><item_summary>item summary 115</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_17.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>116</item_id><item_name>item name 116</item_name><item_slug>item-name-116</item_slug><item_summary>item summary 116</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad Ajax_18.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>117</item_id><item_name>item name 117</item_name><item_slug>item-name-117</item_slug><item_summary>item summary 117</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-12 Ithra BeingSaudi_0.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>118</item_id><item_name>item name 118</item_name><item_slug>item-name-118</item_slug><item_summary>item summary 118</item_summary><item_thumbnail>assets/images/MUSEUMS/2019-12 Ithra BeingSaudi_2.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>119</item_id><item_name>item name 119</item_name><item_slug>item-name-119</item_slug><item_summary>item summary 119</item_summary><item_thumbnail>assets/images/MUSEUMS/Layer 1.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>120</item_id><item_name>item name 120</item_name><item_slug>item-name-120</item_slug><item_summary>item summary 120</item_summary><item_thumbnail>assets/images/MUSEUMS/Layer 2.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
+<category_item parent_id="6"><item_id>121</item_id><item_name>item name 121</item_name><item_slug>item-name-121</item_slug><item_summary>item summary 121</item_summary><item_thumbnail>assets/images/MUSEUMS/Layer 3.jpg</item_thumbnail><item_type>image</item_type></category_item>
+
 <category_item parent_id="6">
 	<item_id>122</item_id>
 	<item_name>item name 122</item_name>
 	<item_slug>item-name-122</item_slug>
 	<item_summary>item summary 122</item_summary>
-	<item_thumbnail>assets/images/MUSEUMS/layer-img-video-1.png</item_thumbnail>
+	<item_thumbnail>assets/images/MUSEUMS/layer-img-video.png</item_thumbnail>
 	<item_type>video</item_type>
-	<item_video_url>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad showreel_1.mp4</item_video_url>
+	<item_video_url>assets/images/MUSEUMS/KACND_Site_Progress-June_2018_1.mp4</item_video_url>
 </category_item> 
 <category_item parent_id="6">
 	<item_id>123</item_id>
 	<item_name>item name 123</item_name>
 	<item_slug>item-name-123</item_slug>
 	<item_summary>item summary 123</item_summary>
+	<item_thumbnail>assets/images/MUSEUMS/layer-img-video-1.png</item_thumbnail>
+	<item_type>video</item_type>
+	<item_video_url>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad showreel_1.mp4</item_video_url>
+</category_item> 
+<category_item parent_id="6">
+	<item_id>124</item_id>
+	<item_name>item name 124</item_name>
+	<item_slug>item-name-124</item_slug>
+	<item_summary>item summary 124</item_summary>
 	<item_thumbnail>assets/images/MUSEUMS/layer-img-video-2.png</item_thumbnail>
 	<item_type>video</item_type>
 	<item_video_url>assets/images/MUSEUMS/2019-12 ITHRA Being Saudi_TimeLAPSE_high_1.mp4</item_video_url>
