@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+
+    <style>
+        .btn-remove {
+            position: absolute;
+            bottom: 0px;
+            right: 50%;
+            transform: translateX(50%);
+            width: fit-content;
+        }
+
+        .rel-position {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <form action="save_file.php" method="post" enctype="multipart/form-data" id="form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>XML Version</label>
+                                <input type="text" name="version" id="version" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Select Images</label>
+                                <input type="file" name="items[]" id="items" multiple class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Parent ID</label>
+                                <input type="text" name="parent_id[]" id="parent_id" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Folder Name</label>
+                                <input type="text" name="folder_name[]" id="folder_name" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fields">
+
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button id="generate_xml" class="btn btn-primary">
+                    Generate XML
+                </button>
+                <!-- <button id="add_field" class="btn btn-info" style="float: right">
+                    Add Field
+                </button> -->
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <textarea name="xml_generated" id="xml_generated" class="form-control" rows="10"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#generate_xml").click(function () {
+                var parent_id = $("#parent_id").val();
+                var version = $("#version").val();
+                var folder_name = $("#folder_name").val();
+                var items = document.getElementById("items");
+                var xml = '<?xml version="'+version+'" encoding="utf-8"?>';
+                xml += '<category_items>'
+                // Access and handle the files
+                console.log(parent_id);
+                for (i = 0; i < items.files.length; i++) {
+                    let j = i + 1;
+                    let file = items.files[i];
+                    console.log(file.name);
+                    // do things with file
+                    xml += '<category_item parent_id="'+parent_id+'">'
+                    xml += '<item_id>'+j+'</item_id><item_name>item name '+j+'</item_name><item_slug>item-name-'+j+'</item_slug><item_summary>item summary '+j+'</item_summary><item_thumbnail>assets/images/'+folder_name+'/'+file.name+'</item_thumbnail><item_type>image</item_type>'
+                    xml += '</category_item>'
+                }
+                xml += '</category_items>'
+                $('#xml_generated').val(xml)
+            });
+
+            // $("#add_field").click(function () {
+            //     var html = '<div class="row"><div class="col-md-7"><div class="form-group"><label>Select Images</label><input type="file" name="items[]" multiple class="form-control" /></div></div><div class="col-md-3"><div class="form-group"><label>Parent ID</label><input type="text" name="parent_id[]" class="form-control" /></div></div><div class="col-md-2 rel-position"><button class="btn btn-danger btn-remove">Remove Field</button></div></div>'
+            //     $('#fields').append(html)
+            // });
+        });
+        // $(document).on("click", ".btn-remove", function () {
+        //     console.log($(this))
+        //     $(this).parents('.row').remove();
+        // });
+    </script>
+</body>
+
+</html>
