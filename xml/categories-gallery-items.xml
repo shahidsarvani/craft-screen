@@ -978,6 +978,14 @@
 	<item_type>image</item_type>
 </category_item>
 
-
+<category_item parent_id="6">
+	<item_id>121</item_id>
+	<item_name>item name 121</item_name>
+	<item_slug>item-name-121</item_slug>
+	<item_summary>item summary 121</item_summary>
+	<item_thumbnail>assets/images/category/video-thumb-2.png</item_thumbnail>
+	<item_type>video</item_type>
+	<item_video_url>assets/images/category/DGDA_WELCOME CENTER_FORMULA E.mp4</item_video_url>
+</category_item> 
 
 </category_items>
