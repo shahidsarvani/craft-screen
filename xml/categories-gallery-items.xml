@@ -983,9 +983,30 @@
 	<item_name>item name 121</item_name>
 	<item_slug>item-name-121</item_slug>
 	<item_summary>item summary 121</item_summary>
-	<item_thumbnail>assets/images/category/video-thumb-2.png</item_thumbnail>
+	<item_thumbnail>assets/images/MUSEUMS/layer-img-video.png</item_thumbnail>
 	<item_type>video</item_type>
-	<item_video_url>assets/images/category/DGDA_WELCOME CENTER_FORMULA E.mp4</item_video_url>
+	<item_video_url>assets/images/MUSEUMS/KACND_Site_Progress-June_2018_1.mp4</item_video_url>
 </category_item> 
+<category_item parent_id="6">
+	<item_id>122</item_id>
+	<item_name>item name 122</item_name>
+	<item_slug>item-name-122</item_slug>
+	<item_summary>item summary 122</item_summary>
+	<item_thumbnail>assets/images/MUSEUMS/layer-img-video-1.png</item_thumbnail>
+	<item_type>video</item_type>
+	<item_video_url>assets/images/MUSEUMS/2019-05 Jeddah Beit_AlBalad showreel_1.mp4</item_video_url>
+</category_item> 
+<category_item parent_id="6">
+	<item_id>123</item_id>
+	<item_name>item name 123</item_name>
+	<item_slug>item-name-123</item_slug>
+	<item_summary>item summary 123</item_summary>
+	<item_thumbnail>assets/images/MUSEUMS/layer-img-video-2.png</item_thumbnail>
+	<item_type>video</item_type>
+	<item_video_url>assets/images/MUSEUMS/2019-12 ITHRA Being Saudi_TimeLAPSE_high_1.mp4</item_video_url>
+</category_item> 
+
+
+
 
 </category_items>
