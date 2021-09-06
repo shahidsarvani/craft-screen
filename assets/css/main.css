@@ -55,7 +55,7 @@ body {
     min-height: 90px;
 }
 .fav-link {
-    font-size: 32px;
+    font-size: 20px;
     color: #FFF;
     text-decoration: none;
 }
@@ -314,5 +314,8 @@ body {
 	right: 0;
 	text-align: center;
 	color: #555;
+}
+#fetch_favorite_txt i {
+    margin-left: 5px;
 }
 /* loading css ends */
