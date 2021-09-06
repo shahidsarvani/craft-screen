@@ -15,7 +15,6 @@
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/spotlight.bundle.js"></script>
-    <script src="./assets/js/infinite-ajax-scroll.min.js"></script>
   </head>
   <body>
     <div id="fetch_section1_data">
@@ -83,9 +82,6 @@
             id="fetch_fav_category_gallery_items_data"
           ></div>
 
-          <div class="pagination">
-            <a href="index.html" class="next">Next</a>
-          </div>
         </div>
       </div>
     </div>
@@ -486,11 +482,11 @@
 						  item_video_url +
 						  '" data-autoplay="false" data-poster="' +
 						  item_thumbnail +
-						  '"><img class="lazyload play-icon" src="./assets/images/play-button.svg" />  <img src="' +
+						  '"><img class="play-icon" src="./assets/images/play-button.svg" />  <img src="' +
 						  item_thumbnail +
 						  '" alt="' +
 						  item_name +
-						  '" /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
+						  '" loading="lazy"  /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
 						  fav_cls_val +
 						  '" data-category-id="' +
 						  parent_id_rc +
@@ -510,11 +506,11 @@
 							item_video_url +
 							'" data-autoplay="false" data-poster="' +
 							item_thumbnail +
-							'"><img class="lazyload play-icon" src="./assets/images/play-button.svg" />  <img src="' +
+							'"><img class="play-icon" src="./assets/images/play-button.svg" />  <img src="' +
 							item_thumbnail +
 							'" alt="' +
 							item_name +
-							'" /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
+							'" loading="lazy" /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
 							fav_cls_val +
 							'" data-category-id="' +
 							parent_id_rc +
@@ -538,7 +534,7 @@
 						  item_thumbnail +
 						  '" alt="' +
 						  item_name +
-						  '" /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
+						  '" loading="lazy" /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
 						  fav_cls_val +
 						  '" data-category-id="' +
 						  parent_id_rc +
@@ -562,7 +558,7 @@
 							item_thumbnail +
 							'" alt="' +
 							item_name +
-							'" /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
+							'" loading="lazy" /> </a> <a href="javascript:void(0);" class="operate-fav-cls ' +
 							fav_cls_val +
 							'" data-category-id="' +
 							parent_id_rc +
@@ -591,16 +587,16 @@
 					  ret_fav_item_txt
 					);
 	
-					if (ret_item_txt != "") {
-					  let ias = new InfiniteAjaxScroll(
-						"#fetch_category_gallery_items_data",
-						{
-						  item: "#fetch_category_gallery_items_data .img-single",
-						  next: ".next",
-						  pagination: ".pagination",
-						}
-					  );
-					}
+					// if (ret_item_txt != "") {
+					//   let ias = new InfiniteAjaxScroll(
+					// 	"#fetch_category_gallery_items_data",
+					// 	{
+					// 	  item: "#fetch_category_gallery_items_data .img-single",
+					// 	  next: ".next",
+					// 	  pagination: ".pagination",
+					// 	}
+					//   );
+					// }
 					
 					
 					  $( "#fetch_section2_data" ).fadeIn( "slow", function() {
