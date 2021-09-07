@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<category_items>
+<category_item parent_id="1"><item_id>211</item_id><item_name>item name 211</item_name><item_slug>item-name-211</item_slug><item_summary>item summary 211</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 0 _IMG_9328.jpg</item_thumbnail><item_type>image</item_type></category_item>
+<category_item parent_id="1"><item_id>212</item_id><item_name>item name 212</item_name><item_slug>item-name-212</item_slug><item_summary>item summary 212</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 4 _2T7A7729.jpg</item_thumbnail><item_type>image</item_type></category_item>
+<category_item parent_id="1"><item_id>213</item_id><item_name>item name 213</item_name><item_slug>item-name-213</item_slug><item_summary>item summary 213</item_summary><item_thumbnail>assets/images/MUSEUMS/2015-3 KFE Riyadh _zone 9 _2T7A8543.jpg</item_thumbnail><item_type>image</item_type></category_item>
+</category_items>

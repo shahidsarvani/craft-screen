@@ -314,20 +314,20 @@
           $("#fetch_favorite_txt").attr("data-favorite-type", "0");
 
           var fav_nums = 0;
-          var random_number1 = Math.floor(Math.random() * 100);
-          var xmlDoc = readXml(
-            "./xml/categories-gallery-items.xml?rm=" + random_number1
-          );
-          var CategoryObj = xmlDoc.getElementsByTagName("category_items");
-          var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item");
-		  if (CategoryItemObj.length) {
+          var random_number1 = Math.floor(Math.random() * 100);  
+		  var items_file_path = "./xml/categories-gallery-items-" + sel_cateid + ".xml?rm="+ random_number1;
+		  /*  "./xml/categories-gallery-items.xml?rm=" + random_number1 */ 
+          var xmlDoc = readXml(items_file_path);
+          var CategoryObj = xmlDoc.getElementsByTagName("category_items"); 
+		  if (CategoryObj[0].getElementsByTagName("category_item")) { /* CategoryItemObj.length */ 
+		  	 var CategoryItemObj = CategoryObj[0].getElementsByTagName("category_item"); 
 				var MatchedItems = new Array();
 				var cntrs0;
 				var cc = 0;
 				for (cntrs0 = 0; cntrs0 < CategoryItemObj.length; cntrs0++) {
-				  var item_parent_id =
-					CategoryItemObj[cntrs0].getAttribute("parent_id");
-				  if (item_parent_id == sel_cateid) {
+				  var item_parent_id = CategoryItemObj[cntrs0].getAttribute("parent_id");
+				 
+				  /* if (item_parent_id == sel_cateid) { */
 					var tempItems = new Array();
 					tempItems["parent_id"] = item_parent_id;
 					tempItems["item_id"] =
@@ -370,7 +370,7 @@
 					MatchedItems[cc] = tempItems;
 	
 					cc++;
-				  }
+				 /* }*/
 				}
 	
 				var total_gallery_items_nums = MatchedItems.length;
@@ -615,9 +615,7 @@
 
     }); 
 
-      
-
-	});
+ });
 	
 	
 	 function readXml(xmlFile) {
